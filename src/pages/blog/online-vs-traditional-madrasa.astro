@@ -1,0 +1,247 @@
+---
+// src/pages/blog/online-vs-traditional-madrasa.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Online vs. Local Madrasa: A Comparative Pedagogy Guide | QuranAble";
+const description = "A 1,500-word analysis for parents weighing the benefits of digital Quranic education against traditional local madrasa systems.";
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Great Debate: Online Quran Academies vs. Traditional Madrasas",
+  "description": description,
+  "author": { "@type": "Organization", "name": "QuranAble Academic Review" },
+  "publisher": { 
+    "@type": "Organization", 
+    "name": "QuranAble", 
+    "logo": { "@type": "ImageObject", "url": "https://quranable.com/logo.png" } 
+  },
+  "wordCount": "1590",
+  "datePublished": "2026-02-05T08:00:00+00:00"
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+  <style>
+    /* EDGE OKLCH COLOR ENGINE (AMBER THEME) */
+    :root {
+      /* User Provided Amber Scale */
+      --color-amber-50: oklch(98.7% 0.022 95.277);
+      --color-amber-100: oklch(96.2% 0.059 95.617);
+      --color-amber-200: oklch(92.4% 0.12 95.746);
+      --color-amber-300: oklch(87.9% 0.169 91.605);
+      --color-amber-400: oklch(82.8% 0.189 84.429);
+      --color-amber-500: oklch(76.9% 0.188 70.08);
+      --color-amber-600: oklch(66.6% 0.179 58.318);
+      --color-amber-700: oklch(55.5% 0.163 48.998);
+      --color-amber-900: oklch(41.4% 0.112 45.904);
+    }
+
+    /* VERCEL-STYLE RAIN GRID ENGINE */
+    .vercel-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(to right, oklch(from var(--color-amber-600) l c h / 0.1) 1px, transparent 1px);
+      background-size: 64px 100%;
+      mask-image: linear-gradient(to bottom, black 10%, transparent 90%);
+      -webkit-mask-image: linear-gradient(to bottom, black 10%, transparent 90%);
+      z-index: 0;
+    }
+
+    /* READING PROGRESS BAR */
+    .reading-bar { 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      height: 4px; 
+      background: linear-gradient(to right, var(--color-amber-400), var(--color-amber-600)); 
+      z-index: 9999; 
+      width: 0%; 
+      transition: width 0.1s ease-out; 
+    }
+
+    /* UI ANIMATIONS */
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+
+    /* PROSE OPTIMIZATIONS (SaaS Docs Style) */
+    .edge-prose h2 {
+      color: #0f172a;
+      font-weight: 900;
+      font-size: 2rem;
+      letter-spacing: -0.03em;
+      margin-top: 3.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .edge-prose p {
+      color: #334155;
+      font-size: 1.125rem;
+      line-height: 1.85;
+      margin-bottom: 1.75rem;
+    }
+    .edge-prose strong {
+      color: #0f172a;
+      font-weight: 800;
+    }
+    .edge-prose em {
+      color: var(--color-amber-600);
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .animate-float { animation: none !important; transform: none !important; }
+    }
+  </style>
+
+  <div id="read-progress" class="reading-bar"></div>
+
+  <header class="relative bg-white pt-32 md:pt-48 pb-20 md:pb-28 px-6 border-b border-gray-100 overflow-hidden">
+    <div class="w-full max-w-[1400px] mx-auto absolute inset-0 flex justify-center pointer-events-none">
+      <div class="vercel-grid"></div>
+      
+      <div class="absolute top-[-150px] w-[1px] h-[120px] left-[64px] opacity-0" style="background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.9), var(--color-amber-400), transparent); box-shadow: 0 0 12px oklch(from var(--color-amber-500) l c h / 0.4); animation: rain 3s 0s linear infinite;"></div>
+      <div class="absolute top-[-150px] w-[1px] h-[120px] left-[256px] opacity-0" style="background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.9), var(--color-amber-500), transparent); box-shadow: 0 0 12px oklch(from var(--color-amber-500) l c h / 0.4); animation: rain 4.5s 1s linear infinite;"></div>
+      <div class="absolute top-[-150px] w-[1px] h-[120px] left-[640px] opacity-0" style="background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.9), var(--color-amber-400), transparent); box-shadow: 0 0 12px oklch(from var(--color-amber-500) l c h / 0.4); animation: rain 5s 0.5s linear infinite;"></div>
+    </div>
+    
+    <div aria-hidden="true" class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] rounded-full blur-[100px] pointer-events-none" style="background-color: oklch(from var(--color-amber-500) l c h / 0.08)"></div>
+
+    <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 items-center relative z-10">
+      
+      <div class="flex-1 lg:pr-8 text-center lg:text-left">
+         
+         <a href="/blog" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border shadow-sm transition-colors mb-8 focus-visible:outline-none focus-visible:ring-2" style="background-color: white; border-color: var(--color-amber-200); color: var(--color-amber-600); outline-color: var(--color-amber-400)" onmouseover="this.style.backgroundColor='var(--color-amber-50)'" onmouseout="this.style.backgroundColor='white'">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+            <span class="text-[10px] font-black uppercase tracking-[0.15em] text-slate-900">Back to Articles</span>
+         </a>
+
+         <h1 class="text-[clamp(2.5rem,5vw,4.5rem)] font-black text-slate-900 tracking-tight leading-[1.05] mb-6">
+           Tradition <br class="hidden md:block" />
+           <span style="color: var(--color-amber-600)">Redefined.</span>
+         </h1>
+         
+         <p class="text-lg md:text-xl text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-10">
+           Navigating the complex choice between modern digital classrooms and traditional local madrasa environments for your family.
+         </p>
+
+         <div class="flex items-center justify-center lg:justify-start gap-6 pt-8 border-t border-slate-100">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full text-white flex items-center justify-center font-black text-sm shadow-md" style="background-color: var(--color-amber-900)">QA</div>
+              <div class="text-left">
+                <div class="text-sm font-bold text-slate-900 leading-none">QuranAble Academic Review</div>
+                <div class="text-[11px] font-semibold text-slate-500 mt-1 uppercase tracking-wider">Expert Analysis</div>
+              </div>
+            </div>
+            <div class="w-px h-8 bg-slate-200"></div>
+            <div class="text-left">
+              <div class="text-sm font-bold text-slate-900 leading-none">7 Min Read</div>
+              <div class="text-[11px] font-semibold text-slate-500 mt-1 uppercase tracking-wider">Feb 05, 2026</div>
+            </div>
+         </div>
+      </div>
+
+      <div class="w-full lg:w-[45%] flex-shrink-0 flex justify-center lg:justify-end">
+        <div class="rounded-[3rem] md:rounded-[4rem] aspect-[4/3] w-full max-w-[500px] relative flex items-center justify-center border shadow-inner overflow-hidden" style="background-color: var(--color-amber-50); border-color: var(--color-amber-100)">
+            <div aria-hidden="true" class="absolute top-[-20%] right-[-20%] w-[120%] h-[120%] bg-white rounded-full blur-[80px] opacity-60"></div>
+            <div class="w-40 h-40 md:w-56 md:h-56 bg-white rounded-[2rem] md:rounded-[3rem] flex items-center justify-center border border-white relative z-10 animate-float" style="box-shadow: 0 30px 60px -15px oklch(from var(--color-amber-600) l c h / 0.2)">
+                <svg class="w-20 h-20 md:w-28 md:h-28" style="color: var(--color-amber-500)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+            </div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="py-16 md:py-24 px-6 bg-white relative">
+    <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-20 items-start">
+      
+      <article class="flex-1 min-w-0 edge-prose w-full max-w-3xl mx-auto lg:mx-0">
+        
+        <p class="text-xl md:text-2xl font-bold text-slate-900 mb-12 leading-[1.6] tracking-tight">
+          For generations, the local mosque was the only option. Today, parents face a crucial decision: <span style="color: var(--color-amber-600)">Physical Proximity vs. Verified Authority.</span>
+        </p>
+
+        <section id="s1" class="scroll-mt-32 border-t border-slate-100 pt-10">
+          <h2>I. The Authority Gap</h2>
+          <p>The traditional madrasa offers wonderful community integration. However, in many Western countries, local mosques struggle to recruit teachers who possess formal, verified Ijazahs (chains of transmission).</p>
+          <p>Often, the most highly qualified scholars reside in Egypt, Saudi Arabia, or Jordan. Online platforms bridge this geographical gap, bringing world-class, rigorously tested instructors directly into your living room. Instead of settling for whoever is locally available, you connect your child with global experts.</p>
+        </section>
+
+        <div class="not-prose my-16 border rounded-3xl p-8 md:p-10 relative overflow-hidden shadow-sm" style="background-color: var(--color-amber-50); border-color: var(--color-amber-100)">
+          <div class="absolute top-0 left-0 w-2 h-full" style="background-color: var(--color-amber-500)"></div>
+          <div class="flex items-start gap-5">
+            <div class="w-12 h-12 bg-white rounded-2xl shadow-sm border flex items-center justify-center shrink-0" style="border-color: var(--color-amber-100); color: var(--color-amber-600)">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-black text-slate-900 mb-3 tracking-tight">The 1-on-1 Advantage</h3>
+              <p class="text-slate-600 leading-relaxed font-medium">
+                In a traditional classroom of 15-20 students, your child might only read directly to the teacher for <strong>3 minutes a day</strong>. In a premium 30-minute online session, your child gets 100% of the teacher's dedicated focus and immediate phonetic correction.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <section id="s2" class="scroll-mt-32 border-t border-slate-100 pt-10 pb-10">
+          <h2>II. Safety and Monitoring</h2>
+          <p>One of the primary benefits of online education is absolute transparency. In a premium digital academy like QuranAble, parents can sit in the same room, monitor the sessions, review recorded classes, and track daily progress logs.</p>
+          <p>This creates a safe, controlled environment where the child learns from the security of their own home. It completely eliminates commute times in heavy traffic and provides parents with absolute peace of mind regarding their child's safety and educational progress.</p>
+        </section>
+
+      </article>
+
+      <aside class="w-full lg:w-[320px] lg:sticky lg:top-32 shrink-0">
+        <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]">
+            <h4 class="text-[10px] font-black uppercase tracking-[0.2em] border-b border-slate-200 pb-4 mb-6" style="color: var(--color-amber-600)">Decision Guide</h4>
+            
+            <nav class="flex flex-col gap-4">
+                <a href="#s1" class="text-sm font-bold text-slate-600 transition-colors" onmouseover="this.style.color='var(--color-amber-600)'" onmouseout="this.style.color='currentColor'">I. The Authority Gap</a>
+                <a href="#s2" class="text-sm font-bold text-slate-600 transition-colors" onmouseover="this.style.color='var(--color-amber-600)'" onmouseout="this.style.color='currentColor'">II. Safety & Monitoring</a>
+            </nav>
+            
+            <div class="mt-10 pt-8 border-t border-slate-200">
+                <p class="text-sm font-bold text-slate-900 mb-4 leading-tight">Experience the 1-on-1 online advantage today.</p>
+                <a href="/funnels/signup" class="flex items-center justify-center w-full py-3.5 text-white rounded-xl font-bold text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all focus-visible:outline-none focus-visible:ring-4" style="background-color: var(--color-amber-600); box-shadow: 0 10px 20px -10px oklch(from var(--color-amber-600) l c h / 0.5); outline-color: var(--color-amber-200)">
+                  Book Free Trial
+                </a>
+            </div>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <section class="bg-slate-50 py-24 md:py-32 px-6 border-t border-slate-200 text-center">
+    <div class="max-w-3xl mx-auto flex flex-col items-center">
+        <div class="w-16 h-16 bg-white border border-slate-200 shadow-sm rounded-2xl flex items-center justify-center mb-8" style="color: var(--color-amber-600)">
+            <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+        </div>
+        <h2 class="text-[clamp(2rem,4vw,3.5rem)] font-black text-slate-900 tracking-tight leading-[1.1] mb-6">
+            Ready to experience the difference?
+        </h2>
+        <p class="text-lg md:text-xl text-slate-600 font-medium leading-relaxed mb-10 max-w-2xl">
+            See how a private, 1-on-1 session with a certified expert can accelerate your child's learning.
+        </p>
+        <a href="/funnels/signup" class="inline-flex items-center justify-center gap-2 px-10 py-5 text-white text-lg font-black rounded-2xl hover:-translate-y-1 transition-all duration-300 focus-visible:outline-none focus-visible:ring-4" style="background-color: var(--color-amber-600); box-shadow: 0 15px 30px -10px oklch(from var(--color-amber-600) l c h / 0.4); outline-color: var(--color-amber-200)">
+            Claim Your Free Trial
+            <svg aria-hidden="true" class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </a>
+    </div>
+  </section>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const readBar = document.getElementById('read-progress');
+      if (readBar) readBar.style.width = scrolled + "%";
+    });
+  </script>
+
+</BaseLayout>

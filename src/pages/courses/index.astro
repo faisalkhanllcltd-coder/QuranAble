@@ -1,0 +1,289 @@
+---
+// src/pages/courses/index.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// SEO & Metadata Variables
+const pageTitle = "Our Structured Courses | QuranAble";
+const pageDescription = "World-class curriculum from basic Qaida to advanced Tafseer. Designed by scholars to suit students of all ages.";
+
+// Edge array without images to keep the UI clean and minimalist
+const courses = [
+  {
+    id: 'course_qaida',
+    level: 'Beginner Level',
+    title: '1. Basic Norani Qaida',
+    desc: 'The essential first step for any beginner (kids or adults). This course builds the foundation of Quranic reading by teaching the Arabic alphabet, correct pronunciation (Makharij), and how to connect letters.',
+    features: ['Recognition of individual Arabic letters', 'Correct pronunciation (Makharij)', 'Learning Movements & Tanween', 'Connecting letters to form words'],
+    buttonText: 'Enroll in Qaida',
+    isPopular: false,
+    badgeColor: 'text-blue-600',
+    badgeBg: 'bg-blue-50',
+    hoverRing: 'group-hover:border-blue-400 group-hover:shadow-blue-500/20',
+    focusRing: 'focus-within:ring-blue-500',
+    titleGradient: 'from-slate-900 to-blue-600',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />'
+  },
+  {
+    id: 'course_tajweed',
+    level: 'Most Popular',
+    title: '2. Quran Reading and Tajweed',
+    desc: 'Designed for students who have finished the Qaida. We focus on reading directly from the Mushaf with fluency, applying basic Tajweed rules to ensure beautiful and accurate recitation.',
+    features: ['Practical application of Tajweed rules', 'Rules of Noon & Meem Sakinah', 'Madd (Elongation), Qalqalah & Ghunnah', 'Proper Stop signs (Waqf)'],
+    buttonText: 'Enroll in Tajweed',
+    isPopular: true,
+    badgeColor: 'text-white',
+    badgeBg: 'bg-gradient-to-r from-pink-500 to-violet-500',
+    hoverRing: 'group-hover:shadow-pink-500/30',
+    focusRing: 'focus-within:ring-pink-500',
+    titleGradient: 'from-pink-500 to-violet-500',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />'
+  },
+  {
+    id: 'course_hifz',
+    level: 'Intermediate',
+    title: '3. Hifz (Memorization)',
+    desc: 'A spiritual journey to memorize the Holy Quran. Our Hifz program is highly structured, focusing equally on new memorization (Sabaq) and retention of old parts (Manzil).',
+    features: ['Personalized memorization goals', 'Daily revision strategy (Muraja\'ah)', 'Strict correction of pronunciation', 'Preparation for Ijazah certification'],
+    buttonText: 'Enroll in Hifz',
+    isPopular: false,
+    badgeColor: 'text-indigo-600',
+    badgeBg: 'bg-indigo-50',
+    hoverRing: 'group-hover:border-indigo-400 group-hover:shadow-indigo-500/20',
+    focusRing: 'focus-within:ring-indigo-500',
+    titleGradient: 'from-slate-900 to-indigo-600',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />'
+  },
+  {
+    id: 'course_tafseer',
+    level: 'All Levels',
+    title: '4. Translation and Tafseer',
+    desc: 'Go beyond reading. Understand the message of Allah. This course dives into the word-for-word translation of verses, historical context, and practical life lessons.',
+    features: ['Word-for-word meaning of verses', 'Detailed explanation (Tafseer)', 'Historical context of Surahs', 'Practical life lessons from the Quran'],
+    buttonText: 'Enroll in Tafseer',
+    isPopular: false,
+    badgeColor: 'text-teal-600',
+    badgeBg: 'bg-teal-50',
+    hoverRing: 'group-hover:border-teal-400 group-hover:shadow-teal-500/20',
+    focusRing: 'focus-within:ring-teal-500',
+    titleGradient: 'from-slate-900 to-teal-600',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />'
+  },
+  {
+    id: 'course_advanced',
+    level: 'Advanced',
+    title: '5. Advanced Tajweed',
+    desc: 'For students who read fluently but wish to master the science of Tajweed theoretically and practically. Ideal for teachers, Imams, or those seeking an official Ijazah.',
+    features: ['Sifaat (Attributes of letters)', 'Advanced rules (Ra\' laws, Idgham)', 'Introduction to different Qira\'at styles', 'Poem memorization (Tuhfatul Atfal)'],
+    buttonText: 'Enroll Advanced',
+    isPopular: false,
+    badgeColor: 'text-slate-700',
+    badgeBg: 'bg-slate-100',
+    hoverRing: 'group-hover:border-slate-400 group-hover:shadow-slate-500/20',
+    focusRing: 'focus-within:ring-slate-500',
+    titleGradient: 'from-slate-900 to-slate-600',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />'
+  },
+  {
+    id: 'course_arabic',
+    level: 'Language',
+    title: '6. Arabic Language',
+    desc: 'Learn the language of the Quran. We teach Modern Standard Arabic (Fusha) covering reading, writing, speaking, and grammar to help you understand Islamic texts directly.',
+    features: ['Arabic Grammar (Nahw & Sarf)', 'Vocabulary & Sentence structure', 'Conversation & Speaking skills', 'Reading comprehension'],
+    buttonText: 'Enroll in Arabic',
+    isPopular: false,
+    badgeColor: 'text-emerald-700',
+    badgeBg: 'bg-emerald-50',
+    hoverRing: 'group-hover:border-emerald-400 group-hover:shadow-emerald-500/20',
+    focusRing: 'focus-within:ring-emerald-500',
+    titleGradient: 'from-slate-900 to-emerald-600',
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />'
+  }
+];
+
+// INJECTED BREADCRUMB & ITEMLIST SCHEMA
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://quranable.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Courses",
+          "item": "https://quranable.com/courses"
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "name": "QuranAble Structured Course Catalog",
+      "description": pageDescription,
+      "itemListElement": courses.map((course, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "Course",
+          "url": `https://quranable.com/funnels/signup?from=${course.id}`,
+          "name": course.title.replace(/^\d+\.\s*/, ''),
+          "description": course.desc,
+          "provider": {
+            "@type": "Organization",
+            "name": "QuranAble",
+            "sameAs": "https://quranable.com"
+          }
+        }
+      }))
+    }
+  ]
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <style>
+    /* STANDARDIZED WITH HOMEPAGE */
+    .hero-grid-bg {
+      background-image: linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+    }
+    
+    .stripe-cta-bg { background-color: #0a2540; position: relative; overflow: hidden; }
+    .stripe-cta-bg::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background-image: radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.4) 0px, transparent 40%), radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.4) 0px, transparent 40%); z-index: 0; }
+    .stripe-grid { position: absolute; inset: -100%; background-image: linear-gradient(to right, rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 50px 50px; transform: perspective(500px) rotateX(60deg); animation: moveGrid 15s linear infinite; z-index: 1; }
+    @keyframes moveGrid { 0% { transform: perspective(500px) rotateX(60deg) translateY(0); } 100% { transform: perspective(500px) rotateX(60deg) translateY(50px); } }
+
+    /* BUTTONS */
+    .btn-hero { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 28px; font-size: 1rem; font-weight: 700; border-radius: 8px; text-decoration: none; transition: all 0.2s ease; background: linear-gradient(90deg, #ec4899 0%, #8b5cf6 100%); color: white; box-shadow: 0 4px 14px 0 rgba(236,72,153,0.3); }
+    .btn-hero:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(236,72,153,0.4); filter: brightness(1.05); }
+  </style>
+
+  <header aria-label="Course Catalog Header" class="relative overflow-hidden bg-white py-24 lg:py-[120px] text-center border-b border-gray-100">
+    <div aria-hidden="true" class="absolute inset-0 z-0 pointer-events-none hero-grid-bg"></div>
+    <div aria-hidden="true" class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+    
+    <div class="w-full max-w-[1200px] mx-auto px-6 relative z-10">
+      
+      <nav aria-label="Breadcrumb" class="mb-6 flex justify-center">
+        <ol class="flex items-center space-x-2 text-sm text-slate-500 font-semibold list-none p-0 m-0">
+          <li><a href="/" class="hover:text-indigo-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded px-1">Home</a></li>
+          <li>
+            <svg class="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+            </svg>
+          </li>
+          <li class="text-slate-800" aria-current="page">Courses</li>
+        </ol>
+      </nav>
+
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-gray-200 text-slate-700 text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
+        <svg aria-hidden="true" class="w-3.5 h-3.5 text-pink-500 animate-pulse" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/></svg>
+        World-Class Curriculum
+      </div>
+      
+      <h1 class="text-[clamp(2.2rem,5vw,4rem)] font-black leading-[1.1] tracking-tight mb-5 text-gray-900">
+        Master the Quran with <br class="hidden sm:block" />
+        <span class="bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent">Structured Courses</span>
+      </h1>
+      
+      <p class="text-[clamp(1rem,2vw,1.15rem)] leading-relaxed font-medium text-gray-600 mb-8 max-w-2xl mx-auto">
+        From the very first letter to mastering the depths of Tafseer. Designed by scholars to suit students of all ages, powered by an edge-performance ecosystem.
+      </p>
+    </div>
+  </header>
+
+  <div aria-label="Course Offerings Grid" class="bg-slate-50 py-24 lg:py-[100px]">
+    <div class="w-full max-w-[1200px] mx-auto px-6">
+      
+      <h2 class="sr-only">Available Courses</h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        
+        {courses.map((course) => (
+          /* EDGE FIX: Added id={course.id} for footer routing */
+          <article id={course.id} class={`bg-white rounded-[1.25rem] border flex flex-col relative group transition-all duration-500 hover:-translate-y-2 overflow-hidden focus-within:ring-4 focus-within:ring-offset-2 ${course.focusRing.replace('focus-visible:', '')} ${course.isPopular ? 'border-pink-500/80 shadow-2xl shadow-pink-500/15 md:-translate-y-3 z-10' : `border-gray-200 shadow-sm ${course.hoverRing}`}`}>
+            
+            <div aria-hidden="true" class={`absolute top-0 left-0 w-full h-1.5 transition-all duration-500 ${course.isPopular ? 'bg-gradient-to-r from-pink-500 to-violet-500' : 'bg-gray-200 group-hover:bg-indigo-500'}`}></div>
+            
+            <div class="p-6 sm:p-8 flex-grow">
+              
+              <div class="flex justify-between items-start mb-5 relative z-20 pointer-events-none">
+                <span class={`inline-flex items-center flex-none h-8 px-3.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors ${course.badgeBg} ${course.badgeColor} ${course.isPopular ? 'shadow-md shadow-pink-500/30' : ''}`}>
+                  {course.isPopular ? '★ ' : ''} {course.level}
+                </span>
+
+                <div class={`w-12 h-12 rounded-xl flex items-center justify-center flex-none transition-all duration-500 group-hover:scale-110 group-hover:rotate-3 ${course.isPopular ? 'bg-pink-500/10 text-pink-600' : `${course.badgeBg} ${course.badgeColor} opacity-70 group-hover:opacity-100`}`}>
+                  <svg aria-hidden="true" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <Fragment set:html={course.icon} />
+                  </svg>
+                </div>
+              </div>
+              
+              <h3 class={`text-[1.25rem] font-extrabold mb-3 leading-snug text-transparent bg-clip-text bg-gradient-to-r ${course.titleGradient}`}>
+                <a href={`/funnels/signup?from=${course.id}`} class="focus:outline-none rounded-md before:absolute before:inset-0 z-10">
+                  {course.title}
+                </a>
+              </h3>
+              
+              <p class="text-slate-500 text-[0.95rem] leading-relaxed mb-6">{course.desc}</p>
+              
+              <div class="border-t border-gray-100 pt-5 mt-auto">
+                <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider mb-4">Course Curriculum:</h4>
+                <ul class="space-y-3 p-0 list-none m-0">
+                  {course.features.map((feature) => (
+                    <li class="flex items-start text-sm text-slate-600 font-medium relative z-20 pointer-events-none">
+                      <div class={`w-5 h-5 mr-3 flex-none mt-0.5 rounded-full flex items-center justify-center ${course.isPopular ? 'bg-pink-500/10 text-pink-600' : 'bg-slate-100 text-indigo-500 group-hover:bg-indigo-500/10 transition-colors'}`}>
+                        <svg aria-hidden="true" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+                      </div>
+                      <span class="leading-snug pt-0.5">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+            </div>
+
+            <div class="p-6 sm:p-8 pt-0 mt-auto">
+              <div aria-hidden="true" class={`w-full text-center px-6 py-4 rounded-xl font-bold text-[0.9rem] transition-all duration-300 relative z-10 pointer-events-none ${course.isPopular ? 'bg-gradient-to-r from-pink-500 to-violet-500 text-white shadow-lg group-hover:shadow-pink-500/40' : 'bg-slate-50 text-slate-800 group-hover:bg-slate-800 group-hover:text-white border border-gray-200'}`}>
+                {course.buttonText}
+              </div>
+            </div>
+
+          </article>
+        ))}
+
+      </div>
+    </div>
+  </div>
+
+  <section aria-label="Final Call to Action" class="stripe-cta-bg py-16 md:py-20 text-center">
+    <div class="stripe-grid"></div>
+    
+    <div class="w-full max-w-[1200px] mx-auto px-4 relative z-10 flex flex-col items-center">
+      <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl md:rounded-[2rem] p-6 sm:p-10 md:p-12 shadow-2xl max-w-2xl w-full">
+         
+         <h2 class="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight leading-tight">Need a custom plan?</h2>
+         <p class="text-base md:text-lg text-slate-300 max-w-lg mx-auto mb-8 leading-relaxed">
+           We often customize courses for specific needs, such as Ijazah programs, Islamic Studies for kids, or specific Surah memorization.
+         </p>
+         
+         <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center w-full">
+           <a href="/contact" class="flex items-center justify-center w-full sm:w-auto gap-2 px-8 py-3.5 md:py-4 text-base font-bold rounded-xl transition-all duration-200 text-white bg-white/5 hover:bg-white/10 border border-white/20 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-pink-400">
+             Contact Our Advisors
+           </a>
+         </div>
+
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

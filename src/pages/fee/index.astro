@@ -1,0 +1,327 @@
+---
+// src/pages/fee/index.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// SEO & Metadata Variables
+const pageTitle = "Tuition & Fees | QuranAble";
+const pageDescription = "Affordable, flexible monthly plans to invest in your Akhirah. No contracts, no hidden fees. Start your free trial today.";
+
+const faqs = [
+  { q: "How do I choose the right plan?", a: "For beginners and younger children, we recommend the 30-minute class, 3 times a week. For Hifz or advanced Tajweed, 40-minute classes 4 to 5 times a week yield the best results." },
+  { q: "Do you charge extra for international students?", a: "No, our fees are strictly based on the currency and plan you select. There are absolutely no hidden international charges." },
+  { q: "Is the price per class or per month?", a: "The prices listed are a flat monthly fee. This covers your entire month of learning based on the classes-per-week you select." },
+  { q: "Is there an enrollment or registration fee?", a: "Zero. We believe in transparent pricing. You only pay your flat monthly tuition—no setup fees or hidden costs." },
+  { q: "Is there a free trial?", a: "Yes! Every new student is entitled to a 100% free, no-obligation trial class to experience our expert tutors." },
+  { q: "Are there contracts or hidden fees?", a: "Never. All plans are month-to-month. You can upgrade, downgrade, pause, or cancel at any time." },
+  { q: "What payment methods do you accept?", a: "We accept all major credit/debit cards via our secure Stripe gateway, as well as PayPal." }
+];
+
+const inclusions = [
+  { 
+    title: "1-on-1 Sessions", 
+    desc: "Private focus.", 
+    iconPath: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+  },
+  { 
+    title: "Expert Tutors", 
+    desc: "Vetted pros.", 
+    iconPath: "M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+  },
+  { 
+    title: "Progress Tracking", 
+    desc: "Student portal.", 
+    iconPath: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+  }
+];
+
+// INJECTED SCHEMA: Breadcrumbs + Automated FAQ generation
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quranable.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Tuition & Fees", "item": "https://quranable.com/fee" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      }))
+    }
+  ]
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <style>
+    /* STANDARDIZED WITH HOMEPAGE */
+    .hero-grid-bg { background-image: linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px); background-size: 40px 40px; mask-image: radial-gradient(circle at center, black 30%, transparent 80%); -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%); }
+    .stripe-cta-bg { background-color: #0a2540; position: relative; overflow: hidden; }
+    .stripe-cta-bg::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background-image: radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.4) 0px, transparent 40%), radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.4) 0px, transparent 40%); z-index: 0; }
+    .stripe-grid { position: absolute; inset: -100%; background-image: linear-gradient(to right, rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 50px 50px; transform: perspective(500px) rotateX(60deg); animation: moveGrid 15s linear infinite; z-index: 1; }
+    @keyframes moveGrid { 0% { transform: perspective(500px) rotateX(60deg) translateY(0); } 100% { transform: perspective(500px) rotateX(60deg) translateY(50px); } }
+
+    /* ACCESSIBILITY TOGGLES: Targeting aria-pressed instead of data-active */
+    .dur-btn { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .dur-btn[aria-pressed="true"] { background-color: #ffffff; color: #1e1b4b; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    
+    .cur-btn { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .cur-btn[aria-pressed="true"] { background-color: #ec4899; color: #ffffff; border-color: #ec4899; box-shadow: 0 8px 20px rgba(236, 72, 153, 0.2); }
+
+    /* FAQ ACCORDION SMOOTH FIX */
+    details > summary { list-style: none; cursor: pointer; }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] summary ~ * { animation: sweep .3s ease-in-out; }
+    details summary .faq-icon { transition: transform 0.3s ease; display: inline-block; }
+    details[open] summary .faq-icon { transform: rotate(45deg); }
+    @keyframes sweep { 0% { opacity: 0; transform: translateY(-10px); } 100% { opacity: 1; transform: translateY(0); } }
+  </style>
+
+  <header aria-label="Pricing Header" class="relative overflow-hidden bg-white py-24 lg:py-[120px] text-center border-b border-gray-100">
+    <div aria-hidden="true" class="absolute inset-0 z-0 pointer-events-none hero-grid-bg"></div>
+    <div aria-hidden="true" class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+    
+    <div class="w-full max-w-[1200px] mx-auto px-6 relative z-10">
+      
+      <nav aria-label="Breadcrumb" class="mb-6 flex justify-center">
+        <ol class="flex items-center space-x-2 text-sm text-slate-500 font-semibold list-none p-0 m-0">
+          <li><a href="/" class="hover:text-indigo-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded px-1">Home</a></li>
+          <li>
+            <svg class="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+            </svg>
+          </li>
+          <li class="text-slate-800" aria-current="page">Tuition & Fees</li>
+        </ol>
+      </nav>
+
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-50 border border-gray-200 text-indigo-950 text-[10px] font-extrabold uppercase tracking-widest mb-6">
+        <span class="w-2 h-2 rounded-full bg-pink-500 animate-pulse"></span>
+        Edge Pricing
+      </div>
+      
+      <h1 class="text-[clamp(2.2rem,5vw,4rem)] font-black leading-[1.1] tracking-tight mb-5 text-indigo-950">
+        Invest in their <br />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-violet-500">Akhirah.</span>
+      </h1>
+      
+      <p class="text-[clamp(1rem,2vw,1.15rem)] leading-relaxed font-medium text-slate-600 max-w-xl mx-auto px-2">
+        Simple monthly plans. No contracts, no hidden fees. Cancel or change your plan anytime.
+      </p>
+    </div>
+  </header>
+
+  <section aria-label="Interactive Pricing Calculator" class="bg-slate-50 py-16 md:py-24 px-4 sm:px-6">
+    <div class="max-w-4xl mx-auto">
+      
+      <div class="bg-white rounded-[2rem] md:rounded-[3rem] shadow-2xl border border-gray-200 overflow-hidden flex flex-col relative">
+        <div aria-hidden="true" class="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-indigo-900 via-violet-500 to-pink-500 z-10"></div>
+
+        <div class="p-6 md:p-12 border-b border-gray-200 flex flex-col items-center">
+          
+          <div class="w-full max-w-[300px] mb-10">
+             <span class="block text-center text-[10px] font-bold text-indigo-900 uppercase tracking-[0.2em] mb-4 opacity-50">Class Duration</span>
+             <div class="flex bg-slate-50 p-1.5 rounded-2xl border border-gray-200 shadow-inner">
+                <button id="btn-30" class="dur-btn flex-1 py-3 text-center rounded-xl font-bold text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" aria-pressed="true">30-Min</button>
+                <button id="btn-40" class="dur-btn flex-1 py-3 text-center rounded-xl font-bold text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" aria-pressed="false">40-Min</button>
+             </div>
+          </div>
+
+          <div class="w-full">
+            <span class="block text-center text-[10px] font-bold text-indigo-900 uppercase tracking-[0.2em] mb-4 opacity-50">Select Currency</span>
+            <div class="flex flex-wrap justify-center gap-2.5">
+              {['GBP', 'USD', 'EUR', 'AED'].map((cur) => (
+                <button 
+                  class="cur-btn px-5 md:px-8 py-2.5 rounded-xl font-bold text-xs bg-white border border-gray-200 text-slate-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500" 
+                  data-currency={cur} 
+                  aria-pressed={cur === 'GBP' ? 'true' : 'false'}
+                >
+                  {cur}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="w-full overflow-x-auto" aria-live="polite">
+          <table class="w-full border-collapse min-w-[420px] table-fixed">
+            <caption class="sr-only">Monthly tuition fees based on class frequency and selected currency.</caption>
+            <thead>
+              <tr class="bg-slate-50 border-b border-gray-200">
+                <th class="w-1/3 py-5 px-4 font-bold text-indigo-950 text-[10px] uppercase tracking-widest text-center">Week</th>
+                <th class="w-1/3 py-5 px-4 font-bold text-indigo-950 text-[10px] uppercase tracking-widest text-center">Month</th>
+                <th class="w-1/3 py-5 px-4 font-bold text-indigo-950 text-[10px] uppercase tracking-widest text-center">Flat Fee</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              {[
+                { qty: 2, total: 8, id: 'price-0' },
+                { qty: 3, total: 12, id: 'price-1' },
+                { qty: 4, total: 16, id: 'price-2' },
+              ].map((row) => (
+                <tr class="hover:bg-slate-50/50 transition-colors">
+                  <td class="py-6 px-2 flex items-center justify-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-slate-50 border border-gray-200 flex items-center justify-center font-bold text-indigo-950 text-sm">{row.qty}</div>
+                    <span class="font-semibold text-slate-700 text-[13px] sm:text-base">Classes</span>
+                  </td>
+                  <td class="py-6 px-2 text-center font-medium text-slate-600 text-[13px] sm:text-base">{row.total} Total</td>
+                  <td id={row.id} class="py-6 px-2 text-center font-extrabold text-xl md:text-3xl text-indigo-950 transition-all duration-300">...</td>
+                </tr>
+              ))}
+              
+              <tr class="bg-pink-500/5 border-l-4 border-pink-500">
+                <td class="py-7 px-2 flex items-center justify-center gap-3">
+                  <div class="w-9 h-9 rounded-xl bg-pink-500 text-white shadow-lg flex items-center justify-center font-bold text-sm">5</div>
+                  <span class="font-bold text-indigo-950 text-[13px] sm:text-base">Classes</span>
+                </td>
+                <td class="py-7 px-2 text-center font-bold text-indigo-950 text-[13px] sm:text-base">20 Total</td>
+                <td id="price-3" class="py-7 px-2 text-center font-extrabold text-2xl md:text-4xl text-pink-500 transition-all duration-300">...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="bg-white px-4 py-8 md:px-6 md:py-10 border-t border-gray-200 grid grid-cols-3 gap-2 md:gap-8">
+          {inclusions.map(item => (
+            <div class="flex flex-col items-center text-center">
+              <div class="w-10 h-10 md:w-12 md:h-12 mb-2 md:mb-3 rounded-xl md:rounded-2xl bg-pink-500/10 text-pink-600 flex items-center justify-center shadow-sm">
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={item.iconPath} />
+                </svg>
+              </div>
+              <div>
+                <span class="block text-indigo-950 font-bold text-[11px] md:text-base leading-tight mb-0.5">{item.title}</span>
+                <span class="block text-slate-500 text-[9px] md:text-sm leading-tight">{item.desc}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="p-8 md:p-14 bg-slate-50 border-t border-gray-200 flex flex-col items-center">
+          <a href="/funnels/signup" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 md:px-20 py-4 md:py-5 text-base md:text-xl font-bold rounded-2xl transition-all duration-200 text-white bg-gradient-to-r from-pink-500 to-violet-500 shadow-[0_4px_14px_rgba(236,72,153,0.3)] hover:-translate-y-[1px] hover:shadow-[0_6px_20px_rgba(236,72,153,0.4)] hover:brightness-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-pink-500">
+            Start Free Trial
+          </a>
+          <div class="flex items-center gap-2 mt-6">
+             <svg aria-hidden="true" class="w-4 h-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+             <span class="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-tighter">7-Day Money-Back Guarantee</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Frequently Asked Questions" class="bg-white py-24 px-5 md:px-6 border-t border-gray-100">
+    <div class="max-w-3xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-[1.15] tracking-tight text-indigo-950">Common FAQ</h2>
+        <p class="text-lg text-slate-500 mt-4">Everything you need to know about our billing and plans.</p>
+      </div>
+
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="group bg-slate-50 rounded-2xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+            <summary class="flex items-center justify-between text-slate-900 font-bold hover:text-indigo-600 transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-pink-500 rounded-lg p-1">
+              <h3 class="text-lg m-0 p-0 font-bold pr-6">{faq.q}</h3>
+              <span class="shrink-0 text-2xl faq-icon text-pink-500 font-light">+</span>
+            </summary>
+            <p class="mt-4 text-slate-600 text-sm md:text-base leading-relaxed pr-8 border-t border-gray-200 pt-4">
+              {faq.a}
+            </p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Final Call to Action" class="stripe-cta-bg py-16 md:py-20 text-center">
+    <div class="stripe-grid"></div>
+    
+    <div class="w-full max-w-[1200px] mx-auto px-4 relative z-10 flex flex-col items-center">
+      <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl md:rounded-[2rem] p-6 sm:p-10 md:p-12 shadow-2xl max-w-2xl w-full">
+         
+         <h2 class="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight leading-tight">Invest in Your Akhirah Today</h2>
+         <p class="text-base md:text-lg text-slate-300 max-w-lg mx-auto mb-8 leading-relaxed">
+           Your tuition guarantees access to verified scholars and a secure, world-class platform. Start with a 100% free, zero-obligation trial class.
+         </p>
+         
+         <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center w-full">
+           <a href="/funnels/signup" class="flex items-center justify-center w-full sm:w-auto gap-2 px-8 py-3.5 md:py-4 text-base font-bold rounded-xl transition-all duration-200 text-white bg-gradient-to-r from-pink-500 to-violet-500 shadow-[0_4px_14px_rgba(236,72,153,0.3)] hover:-translate-y-[1px] hover:shadow-[0_6px_20px_rgba(236,72,153,0.4)] hover:brightness-105 border border-white/20 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-pink-400">
+             Claim Your Free Trial
+           </a>
+         </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const data = {
+        '30': {
+          'GBP': ['£30', '£38', '£42', '£46'],
+          'USD': ['$40', '$50', '$55', '$60'],
+          'EUR': ['€36', '€46', '€50', '€55'],
+          'AED': ['145د.إ', '180د.إ', '205د.إ', '220د.إ']
+        },
+        '40': {
+          'GBP': ['£40', '£50', '£56', '£61'],
+          'USD': ['$56', '$66', '$73', '$80'],
+          'EUR': ['€48', '€61', '€66', '€73'],
+          'AED': ['193د.إ', '240د.إ', '273د.إ', '293د.إ']
+        }
+      };
+
+      let activeDur = '30';
+      let activeCur = 'GBP';
+      let transitionTimeouts = [];
+
+      const durBtns = document.querySelectorAll('.dur-btn');
+      const curBtns = document.querySelectorAll('.cur-btn');
+      const priceEls = ['price-0', 'price-1', 'price-2', 'price-3'].map(id => document.getElementById(id));
+
+      function update() {
+        const prices = data[activeDur][activeCur];
+        
+        transitionTimeouts.forEach(clearTimeout);
+        transitionTimeouts = [];
+
+        priceEls.forEach((el, i) => {
+          if (el) {
+            el.style.opacity = '0';
+            const tid = setTimeout(() => { 
+              el.textContent = prices[i]; 
+              el.style.opacity = '1'; 
+            }, 150);
+            transitionTimeouts.push(tid);
+          }
+        });
+        
+        durBtns.forEach(b => b.setAttribute('aria-pressed', String(b.id === `btn-${activeDur}`)));
+        curBtns.forEach(b => b.setAttribute('aria-pressed', String(b.getAttribute('data-currency') === activeCur)));
+      }
+
+      durBtns.forEach(b => b.addEventListener('click', (e) => { 
+        activeDur = e.currentTarget.id === 'btn-30' ? '30' : '40'; 
+        update(); 
+      }));
+      
+      curBtns.forEach(b => b.addEventListener('click', (e) => { 
+        activeCur = e.currentTarget.getAttribute('data-currency') || 'GBP'; 
+        update(); 
+      }));
+      
+      update();
+    });
+  </script>
+</BaseLayout>

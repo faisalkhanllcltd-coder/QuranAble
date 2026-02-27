@@ -1,0 +1,264 @@
+---
+// src/pages/contact/index.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// SEO & Metadata Variables
+const pageTitle = "Contact Us | QuranAble";
+const pageDescription = "Connect with the QuranAble team. We provide global, 24/7 support for our students.";
+
+const contactMethods = [
+  { 
+    title: "WhatsApp Support", 
+    desc: "Instant chat with our academic advisors.", 
+    value: "+1 (307) 269-6533", 
+    link: "https://wa.me/message/WFXJIQXKUWUAC1", 
+    icon: "M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z",
+    badge: "Fastest",
+    status: "online"
+  },
+  { 
+    title: "Email Outreach", 
+    desc: "For general inquiries and partnership proposals.", 
+    value: "quraanable@gmail.com", 
+    link: "mailto:quraanable@gmail.com",
+    icon: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+    badge: null,
+    status: "reply < 2hrs"
+  },
+  { 
+    title: "Global Network", 
+    desc: "Available to assist students across all time zones.", 
+    value: "View Service Hours", 
+    link: "#global-infrastructure",
+    icon: "M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+  }
+];
+
+// INJECTED SCHEMA: ContactPage + Breadcrumbs for Google SEO
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quranable.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://quranable.com/contact" }
+      ]
+    },
+    {
+      "@type": "ContactPage",
+      "name": pageTitle,
+      "url": "https://quranable.com/contact",
+      "description": pageDescription
+    }
+  ]
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <style>
+    /* STANDARDIZED HOMEPAGE DNA */
+    .hero-grid-bg { background-image: linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px); background-size: 40px 40px; mask-image: radial-gradient(circle at center, black 30%, transparent 80%); -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%); }
+    
+    /* Premium Edge UI Shadows & Borders */
+    .stripe-shadow { box-shadow: 0 50px 100px -20px rgba(50, 50, 93, 0.08), 0 30px 60px -30px rgba(0, 0, 0, 0.04); }
+    .glass-border { border: 1px solid rgba(0, 0, 0, 0.06); }
+    .glass-panel { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); }
+    
+    /* Hide native browser focus rings so our custom wrapper ring takes over */
+    input:focus, textarea:focus { outline: none !important; box-shadow: none !important; }
+
+    /* EDGE A11Y FIX: Disable animations for users with vestibular disorders */
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .hover\:-translate-y-1:hover { transform: none !important; }
+    }
+  </style>
+
+  <header aria-label="Contact Us Header" class="relative overflow-hidden bg-slate-50 pt-32 md:pt-44 pb-16 md:pb-24 px-6 border-b border-gray-200">
+    <div aria-hidden="true" class="absolute inset-0 z-0 pointer-events-none hero-grid-bg opacity-50"></div>
+    
+    <div aria-hidden="true" class="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-pink-500/10 rounded-full blur-[100px] animate-pulse pointer-events-none"></div>
+    <div aria-hidden="true" class="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-violet-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10 flex flex-col items-center text-center">
+      
+      <nav aria-label="Breadcrumb" class="mb-6 flex justify-center">
+        <ol class="flex items-center space-x-2 text-sm text-slate-500 font-semibold list-none p-0 m-0">
+          <li><a href="/" class="hover:text-indigo-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded px-1">Home</a></li>
+          <li>
+            <svg class="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+            </svg>
+          </li>
+          <li class="text-slate-800" aria-current="page">Contact</li>
+        </ol>
+      </nav>
+
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-gray-200 shadow-sm mb-8 hover:scale-105 transition-transform cursor-default">
+        <span class="relative flex h-2.5 w-2.5">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
+        </span>
+        <span class="text-[10px] font-black uppercase tracking-widest text-indigo-950">Support Online Now</span>
+      </div>
+
+      <h1 class="text-[clamp(2.2rem,5vw,4rem)] font-black text-indigo-950 tracking-tight mb-6 leading-[1.05]">
+        Let's start a <br class="hidden md:block" />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-violet-500">conversation.</span>
+      </h1>
+      
+      <p class="text-[clamp(1rem,2vw,1.15rem)] text-slate-600 max-w-2xl mx-auto leading-relaxed font-medium">
+        Whether you have questions about enrollment, pricing, or the Ijazah process, our academic advisors are ready to guide you.
+      </p>
+    </div>
+  </header>
+
+  <main class="bg-white py-24 md:py-32 px-6 relative z-20">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+      
+      <div class="lg:col-span-5 space-y-12">
+        <div class="space-y-4">
+          <h2 class="text-[clamp(1.75rem,4vw,2.75rem)] font-black text-indigo-950 tracking-tight leading-[1.15]">Direct Access.</h2>
+          <p class="text-lg text-slate-600 leading-relaxed font-medium">Select the method that works best for you. We optimize our response times to serve students globally.</p>
+        </div>
+
+        <div class="space-y-5">
+          {contactMethods.map(method => (
+            <a href={method.link} class="block group focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-pink-500 rounded-[1.5rem]">
+              <div class="bg-slate-50 p-6 md:p-8 rounded-[1.5rem] border border-gray-200 relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-pink-500/5 hover:-translate-y-1 hover:bg-white hover:border-pink-200">
+                {method.badge && (
+                  <div class="absolute top-6 right-6 bg-pink-500/10 text-pink-600 text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
+                    {method.badge}
+                  </div>
+                )}
+                <div class="flex items-start gap-5">
+                  <div class="w-14 h-14 rounded-2xl bg-white border border-gray-200 shadow-sm flex-none flex items-center justify-center text-indigo-950 group-hover:bg-gradient-to-br group-hover:from-pink-500 group-hover:to-violet-500 group-hover:text-white group-hover:border-transparent transition-all duration-300">
+                    <svg aria-hidden="true" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d={method.icon} /></svg>
+                  </div>
+                  <div class="pt-1">
+                    <h3 class="text-xl font-black text-indigo-950 mb-1 group-hover:text-pink-600 transition-colors">{method.title}</h3>
+                    <p class="text-slate-600 text-sm font-medium leading-relaxed mb-4 pr-8">{method.desc}</p>
+                    <div class="flex items-center gap-3">
+                      <span class="inline-flex items-center gap-2 text-sm font-bold text-indigo-950">
+                        {method.value}
+                        <svg aria-hidden="true" class="w-4 h-4 text-pink-500 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                      </span>
+                      <span class="text-[9px] uppercase tracking-widest font-bold text-slate-500 bg-gray-200/50 px-2 py-0.5 rounded-md">
+                        {method.status}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <div class="lg:col-span-7 relative w-full">
+        <div aria-hidden="true" class="absolute -top-12 -right-12 w-72 h-72 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-violet-500/20 to-transparent rounded-full blur-3xl pointer-events-none hidden md:block"></div>
+
+        <div class="relative glass-panel border border-gray-200 rounded-[2rem] md:rounded-[3rem] p-6 md:p-12 stripe-shadow z-10 w-full overflow-hidden">
+          <div class="mb-8 md:mb-10">
+            <h2 class="text-2xl md:text-3xl font-black text-indigo-950 tracking-tight mb-2">Send us a message</h2>
+            <p class="text-slate-600 font-medium text-sm md:text-base">Fill out the form below and an advisor will contact you shortly.</p>
+          </div>
+
+          <form action="https://formsubmit.co/faisalkhan.llc.ltd@gmail.com" method="POST" class="space-y-4 md:space-y-5 w-full">
+            
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="New General Contact Inquiry from QuranAble.com">
+            <input type="hidden" name="_next" value="https://quranable.com/">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 w-full">
+              <div class="bg-slate-50 border border-gray-200 rounded-[1rem] px-5 py-3 shadow-inner shadow-black/[0.02] focus-within:ring-2 focus-within:ring-pink-500/50 focus-within:border-pink-500 transition-all group cursor-text">
+                <label for="firstName" class="block text-[10px] font-black text-indigo-950 uppercase tracking-widest mb-0.5 group-focus-within:text-pink-600 transition-colors cursor-text">First Name</label>
+                <input type="text" id="firstName" name="firstName" placeholder="Ahmed" autocomplete="given-name" required aria-required="true" class="w-full bg-transparent border-none p-0 focus:ring-0 outline-none text-slate-800 font-bold text-base placeholder:text-slate-400 placeholder:font-medium" />
+              </div>
+              
+              <div class="bg-slate-50 border border-gray-200 rounded-[1rem] px-5 py-3 shadow-inner shadow-black/[0.02] focus-within:ring-2 focus-within:ring-pink-500/50 focus-within:border-pink-500 transition-all group cursor-text">
+                <label for="lastName" class="block text-[10px] font-black text-indigo-950 uppercase tracking-widest mb-0.5 group-focus-within:text-pink-600 transition-colors cursor-text">Last Name</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Ali" autocomplete="family-name" required aria-required="true" class="w-full bg-transparent border-none p-0 focus:ring-0 outline-none text-slate-800 font-bold text-base placeholder:text-slate-400 placeholder:font-medium" />
+              </div>
+            </div>
+
+            <div class="bg-slate-50 border border-gray-200 rounded-[1rem] px-5 py-3 shadow-inner shadow-black/[0.02] focus-within:ring-2 focus-within:ring-pink-500/50 focus-within:border-pink-500 transition-all group cursor-text w-full">
+              <label for="email" class="block text-[10px] font-black text-indigo-950 uppercase tracking-widest mb-0.5 group-focus-within:text-pink-600 transition-colors cursor-text">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="ahmed@example.com" autocomplete="email" required aria-required="true" class="w-full bg-transparent border-none p-0 focus:ring-0 outline-none text-slate-800 font-bold text-base placeholder:text-slate-400 placeholder:font-medium" />
+            </div>
+
+            <div class="bg-slate-50 border border-gray-200 rounded-[1rem] px-5 py-3 shadow-inner shadow-black/[0.02] focus-within:ring-2 focus-within:ring-pink-500/50 focus-within:border-pink-500 transition-all group cursor-text w-full">
+              <label for="subject" class="block text-[10px] font-black text-indigo-950 uppercase tracking-widest mb-0.5 group-focus-within:text-pink-600 transition-colors cursor-text">Subject</label>
+              <input type="text" id="subject" name="subject" placeholder="e.g., Enrollment, Pricing, Technical Support" required aria-required="true" class="w-full bg-transparent border-none p-0 focus:ring-0 outline-none text-slate-800 font-bold text-base placeholder:text-slate-400 placeholder:font-medium" />
+            </div>
+
+            <div class="bg-slate-50 border border-gray-200 rounded-[1rem] px-5 py-3 shadow-inner shadow-black/[0.02] focus-within:ring-2 focus-within:ring-pink-500/50 focus-within:border-pink-500 transition-all group cursor-text w-full">
+              <label for="message" class="block text-[10px] font-black text-indigo-950 uppercase tracking-widest mb-2 group-focus-within:text-pink-600 transition-colors cursor-text">Message Details</label>
+              <textarea id="message" name="message" rows="4" placeholder="Tell us what you need..." required aria-required="true" class="w-full bg-transparent border-none p-0 focus:ring-0 outline-none text-slate-800 font-bold text-base placeholder:text-slate-400 placeholder:font-medium resize-none"></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-4 md:py-5 px-6 bg-gradient-to-r from-pink-500 to-violet-500 text-white font-black text-lg rounded-[1.25rem] shadow-xl shadow-pink-500/20 hover:shadow-pink-500/40 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 group mt-2 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-pink-500 focus-visible:ring-offset-2">
+              Send Message
+              <svg aria-hidden="true" class="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" /></svg>
+            </button>
+            
+            <p class="text-center text-[10px] md:text-[11px] text-slate-400 font-bold uppercase tracking-widest mt-4">
+              Secure & Encrypted • <a href="/privacy" class="underline hover:text-pink-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 rounded">Privacy Policy</a>
+            </p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <section id="global-infrastructure" aria-label="Global Support Network" class="bg-slate-50 py-24 border-y border-gray-200 overflow-hidden relative">
+    <div aria-hidden="true" class="absolute inset-0 bg-indigo-950/5 [mask-image:linear-gradient(to_bottom,white,transparent)]"></div>
+    <div class="max-w-7xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-12">
+      <div class="md:w-1/2">
+        <h2 class="text-[clamp(1.75rem,4vw,2.75rem)] font-black text-indigo-950 tracking-tighter mb-5 leading-[1.15]">Global Infrastructure.</h2>
+        <p class="text-lg text-slate-600 font-medium leading-relaxed max-w-lg">
+          We operate across multiple time zones, ensuring that whether you are in London, New York, or Sydney, our support and teaching staff are online and ready to assist you.
+        </p>
+      </div>
+      
+      <ul class="md:w-1/2 grid grid-cols-2 gap-4 w-full p-0 m-0 list-none">
+        {['EST (New York)', 'GMT (London)', 'AST (Dubai)', 'AEST (Sydney)'].map(tz => (
+          <li class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm flex flex-col gap-2 hover:-translate-y-1 hover:shadow-md transition-all cursor-default">
+             <div class="flex items-center justify-between">
+               <span aria-hidden="true" class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
+               <span class="text-[9px] font-black uppercase tracking-widest text-slate-400">Active Node</span>
+             </div>
+             <span class="text-sm md:text-base font-bold text-indigo-950 mt-1">{tz}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section aria-label="Quick Answers" class="bg-white py-20 px-6">
+    <div class="max-w-4xl mx-auto bg-slate-50 rounded-[2rem] border border-gray-200 p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left transition-all hover:shadow-lg hover:shadow-black/5">
+      <div class="flex items-center gap-6 flex-col md:flex-row">
+        <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center flex-none border border-gray-200 shadow-sm text-pink-500">
+          <svg aria-hidden="true" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        </div>
+        <div>
+          <h3 class="text-2xl font-black text-indigo-950 tracking-tight mb-2">Looking for quick answers?</h3>
+          <p class="text-slate-600 text-sm md:text-base font-medium">We might have already answered your question.</p>
+        </div>
+      </div>
+      <a href="/faq" class="flex-none px-8 py-4 bg-white border border-gray-200 text-indigo-950 shadow-sm font-bold rounded-xl hover:text-pink-600 hover:border-pink-200 hover:shadow-md hover:-translate-y-1 transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-pink-500">
+        Browse FAQ &rarr;
+      </a>
+    </div>
+  </section>
+
+</BaseLayout>

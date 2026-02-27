@@ -1,0 +1,273 @@
+---
+// src/pages/blog/index.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// SEO & Metadata Variables
+const pageTitle = "Editorial Hub | QuranAble";
+const pageDescription = "Insights, guides, and authoritative resources on Quranic learning, Tajweed, and Islamic pedagogy.";
+
+// 1. Featured Cover Story (Post 1)
+const featuredPost = {
+  title: "The Ultimate Guide: What is the Best Age for a Child to Start Learning the Quran?",
+  excerpt: "A comprehensive, psychology-backed look at when and how to introduce Noorani Qaida to young children without causing burnout, focusing on modern digital engagement and cognitive readiness.",
+  category: "Parenting & Education",
+  date: "Feb 22, 2026",
+  readTime: "8 min read",
+  link: "/blog/best-age-to-start-quran",
+  icon: "M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
+};
+
+// 4 Grid Posts (Posts 2, 3, 4, 5)
+const posts = [
+  {
+    title: "Understanding Ijazah: Why the Chain of Transmission Matters Online",
+    excerpt: "How traditional Isnad works in the digital age, and why you should never hire a tutor who lacks a verifiable, unbroken chain to the Prophet (PBUH).",
+    category: "Authority & Tradition",
+    date: "Feb 18, 2026",
+    readTime: "6 min read",
+    link: "/blog/understanding-ijazah-online",
+    accent: "#4F46E5", // Indigo
+    icon: "M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
+  },
+  {
+    title: "5 Common Tajweed Mistakes Non-Native Speakers Make",
+    excerpt: "An actionable guide for English speakers focusing on the critical differences in Makharij (articulation points) that change the meaning of Quranic words.",
+    category: "Phonetic Science",
+    date: "Feb 14, 2026",
+    readTime: "10 min read",
+    link: "/blog/common-tajweed-mistakes",
+    accent: "#E11D48", // Rose
+    icon: "M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"
+  },
+  {
+    title: "Modern Hifz Techniques: Spaced Repetition & Cognitive Science",
+    excerpt: "A 1,500-word exploration into the neurology of memory and how Spaced Repetition (SRS) is revolutionizing modern Quranic memorization.",
+    category: "Memory Science",
+    date: "Feb 10, 2026",
+    readTime: "12 min read",
+    link: "/blog/modern-hifz-techniques",
+    accent: "#0284c7", // Cyber Blue
+    icon: "M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z"
+  },
+  {
+    title: "Online vs. Local Madrasa: A Comparative Pedagogy Guide",
+    excerpt: "A 1,500-word analysis for parents weighing the benefits of digital Quranic education against traditional local madrasa systems.",
+    category: "Comparative Analysis",
+    date: "Feb 05, 2026",
+    readTime: "11 min read",
+    link: "/blog/online-vs-traditional-madrasa",
+    accent: "#92400e", // Walnut
+    icon: "M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418"
+  }
+];
+
+// INJECTED SCHEMA: Blog + Breadcrumbs for Google SEO
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quranable.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://quranable.com/blog" }
+      ]
+    },
+    {
+      "@type": "Blog",
+      "name": pageTitle,
+      "description": pageDescription,
+      "url": "https://quranable.com/blog",
+      "publisher": {
+        "@type": "Organization",
+        "name": "QuranAble"
+      }
+    }
+  ]
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <style>
+    .hero-grid-bg { background-image: linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px); background-size: 40px 40px; mask-image: radial-gradient(circle at center, black 30%, transparent 80%); -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%); }
+    
+    .stripe-shadow { box-shadow: 0 50px 100px -20px rgba(50, 50, 93, 0.08), 0 30px 60px -30px rgba(0, 0, 0, 0.04); }
+    .glass-border { border: 1px solid rgba(0, 0, 0, 0.05); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .hover\:-translate-y-1:hover { transform: none !important; }
+      .group-hover\:scale-110:hover, .group-hover\:scale-105:hover { transform: none !important; }
+    }
+  </style>
+
+  <header aria-label="Editorial Hub Header" class="relative overflow-hidden bg-slate-50 pt-32 md:pt-44 pb-12 md:pb-16 px-6 border-b border-gray-200">
+    <div aria-hidden="true" class="absolute inset-0 z-0 pointer-events-none hero-grid-bg opacity-50"></div>
+    <div aria-hidden="true" class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-indigo-500/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto relative z-10 text-center">
+      
+      <nav aria-label="Breadcrumb" class="mb-6 flex justify-center">
+        <ol class="flex items-center space-x-2 text-sm text-slate-500 font-semibold list-none p-0 m-0">
+          <li><a href="/" class="hover:text-indigo-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded px-1">Home</a></li>
+          <li>
+            <svg class="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+            </svg>
+          </li>
+          <li class="text-slate-800" aria-current="page">Journal</li>
+        </ol>
+      </nav>
+
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-gray-200 shadow-sm mb-6">
+        <span aria-hidden="true" class="w-2 h-2 rounded-full bg-pink-500 animate-pulse"></span>
+        <span class="text-[10px] font-black uppercase tracking-widest text-indigo-950">Insights & Education</span>
+      </div>
+
+      <h1 class="text-[clamp(2.2rem,5vw,4rem)] font-black text-indigo-950 tracking-tighter mb-6 leading-[1.05]">
+        The QuranAble <br class="hidden md:block" />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-violet-500">Journal.</span>
+      </h1>
+      
+      <p class="text-[clamp(1rem,2vw,1.15rem)] text-slate-600 max-w-2xl mx-auto leading-relaxed font-medium">
+        Deep dives into Tajweed mastery, effective memorization techniques, and the intersection of modern tech and ancient Isnad.
+      </p>
+    </div>
+  </header>
+
+  <main class="bg-white py-16 md:py-24 px-4 md:px-6 relative z-20">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 w-full items-start relative">
+      
+      <div class="lg:col-span-2 flex flex-col gap-10 md:gap-12 min-w-0">
+        
+        <article class="group block w-full bg-indigo-950 rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-12 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-900/20 hover:-translate-y-1 relative overflow-hidden min-w-0 focus-within:ring-4 focus-within:ring-pink-500 focus-within:ring-offset-2">
+          <div aria-hidden="true" class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-pink-500/30 via-transparent to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div aria-hidden="true" class="absolute inset-0 opacity-10" style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 40px 40px;"></div>
+          
+          <div class="relative z-10 flex flex-col h-full w-full min-w-0 pointer-events-none">
+            
+            <div class="flex items-center gap-4 mb-8 flex-wrap">
+              <div class="w-14 h-14 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-pink-400 backdrop-blur-sm group-hover:scale-110 transition-transform duration-500">
+                <svg aria-hidden="true" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d={featuredPost.icon} /></svg>
+              </div>
+              <div>
+                <span class="bg-white text-indigo-950 text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-md shadow-sm mb-1 inline-block">
+                  Cover Story
+                </span>
+                <p class="text-[11px] font-bold uppercase tracking-widest text-slate-300">
+                  {featuredPost.category} &bull; {featuredPost.date}
+                </p>
+              </div>
+            </div>
+            
+            <h2 class="text-3xl md:text-5xl font-black text-white tracking-tighter leading-[1.1] mb-6 group-hover:text-pink-400 transition-colors duration-300 w-full break-words">
+              <a href={featuredPost.link} class="before:absolute before:inset-0 focus:outline-none pointer-events-auto">
+                {featuredPost.title}
+              </a>
+            </h2>
+            
+            <p class="text-lg md:text-xl text-slate-300 leading-relaxed font-medium mb-10 w-full break-words">
+              {featuredPost.excerpt}
+            </p>
+            
+            <div class="mt-auto inline-flex items-center gap-2 text-white font-bold text-base md:text-lg group-hover:text-pink-400 transition-colors">
+              Read the full guide 
+              <svg aria-hidden="true" class="w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </div>
+          </div>
+        </article>
+
+        <div class="w-full min-w-0">
+          <div class="flex items-center justify-between mb-8 px-2 md:px-0 border-b border-gray-100 pb-4">
+            <h3 class="text-2xl font-black text-indigo-950 tracking-tight">Latest Entries</h3>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 w-full min-w-0">
+            {posts.map(post => (
+              <article class="group flex flex-col h-full bg-slate-50 border border-gray-200 rounded-[1.5rem] p-6 md:p-8 transition-all duration-300 hover:bg-white hover:stripe-shadow hover:-translate-y-1 relative overflow-hidden min-w-0 focus-within:ring-4 focus-within:ring-pink-500 focus-within:ring-offset-2">
+                
+                <div aria-hidden="true" class="absolute top-0 left-0 w-full h-1.5 transition-colors duration-300" style={`background-color: ${post.accent}; opacity: 0.8;`}></div>
+                
+                <div class="flex flex-col flex-grow w-full min-w-0 pt-2 pointer-events-none">
+                  
+                  <div class="flex items-center gap-4 mb-6">
+                    <div class="w-12 h-12 rounded-[1rem] flex items-center justify-center text-white shadow-sm flex-shrink-0 group-hover:scale-105 transition-transform duration-300" style={`background-color: ${post.accent};`}>
+                      <svg aria-hidden="true" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d={post.icon} /></svg>
+                    </div>
+                    <div>
+                      <span class="text-[9px] font-black uppercase tracking-widest block mb-1" style={`color: ${post.accent};`}>
+                        {post.category}
+                      </span>
+                      <span class="text-[10px] font-bold uppercase tracking-widest text-slate-500 block">
+                        {post.date} &bull; {post.readTime}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <h4 class="text-xl font-black text-indigo-950 tracking-tight leading-snug mb-4 transition-colors line-clamp-2 w-full break-words" style={`--tw-group-hover-color: ${post.accent};`}>
+                    <a href={post.link} class="before:absolute before:inset-0 focus:outline-none pointer-events-auto group-hover:text-[var(--tw-group-hover-color)] transition-colors duration-300">
+                      {post.title}
+                    </a>
+                  </h4>
+                  
+                  <p class="text-[15px] text-slate-600 leading-relaxed font-medium mb-8 line-clamp-3 w-full break-words">
+                    {post.excerpt}
+                  </p>
+                  
+                  <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-200 w-full">
+                    <span class="text-[11px] font-bold uppercase tracking-widest text-slate-500">Read Article</span>
+                    <div class="text-indigo-950 group-hover:translate-x-1 transition-transform" style={`color: ${post.accent};`}>
+                      <svg aria-hidden="true" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                    </div>
+                  </div>
+                </div>
+                
+              </article>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+      <aside class="lg:col-span-1 flex flex-col gap-8 min-w-0 lg:sticky lg:top-24 self-start z-20 pt-10 lg:pt-0">
+          
+        <div class="bg-indigo-950 rounded-[1.5rem] p-6 md:p-8 stripe-shadow relative overflow-hidden group w-full min-w-0">
+          <div aria-hidden="true" class="absolute top-0 right-0 w-48 h-48 bg-pink-500 rounded-full blur-[60px] opacity-30 pointer-events-none group-hover:opacity-40 transition-opacity duration-500"></div>
+          
+          <div class="relative z-10 text-left w-full">
+            <div class="w-10 h-10 bg-white/10 rounded-lg border border-white/20 flex items-center justify-center text-white mb-5 backdrop-blur-md">
+              <svg aria-hidden="true" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5z" /></svg>
+            </div>
+            
+            <h3 class="text-xl md:text-2xl font-black text-white leading-tight mb-2">Ready to begin?</h3>
+            <p class="text-indigo-100 font-medium text-sm mb-6 leading-relaxed">
+              Claim your 100% free, 30-minute diagnostic session with a senior certified tutor today.
+            </p>
+
+            <ul class="space-y-3 mb-6 w-full p-0 m-0 list-none">
+              {['1-on-1 Interactive Classes', 'Certified Ijazah Scholars', 'No Credit Card Needed'].map(feat => (
+                <li class="flex items-center gap-2.5 text-sm text-white font-bold w-full break-words">
+                  <svg aria-hidden="true" class="w-4 h-4 text-pink-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg> 
+                  {feat}
+                </li>
+              ))}
+            </ul>
+            
+            <a href="/funnels/signup" class="flex items-center justify-center w-full py-3.5 bg-gradient-to-r from-pink-500 to-violet-500 text-white font-black text-sm md:text-[15px] rounded-xl shadow-lg hover:shadow-pink-500/40 transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white">
+              Start Free Trial Now
+            </a>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+</BaseLayout>

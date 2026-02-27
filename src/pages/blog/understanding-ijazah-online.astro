@@ -1,0 +1,256 @@
+---
+// src/pages/blog/understanding-ijazah-online.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Understanding Ijazah: The Oral Blockchain of Quranic Transmission | QuranAble";
+const description = "A 1,500-word academic guide on the tradition of Isnad, the technical requirements of an Ijazah, and how to verify Quranic teachers in the digital age.";
+
+// Advanced SEO Schema for Google E-E-A-T
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://quranable.com/blog/understanding-ijazah-online"
+  },
+  "headline": "The Isnad Paradigm: Why Ijazah is the Gold Standard for Online Quranic Learning",
+  "description": description,
+  "author": { "@type": "Organization", "name": "QuranAble Academic Review Board" },
+  "publisher": { "@type": "Organization", "name": "QuranAble", "logo": { "@type": "ImageObject", "url": "https://quranable.com/logo.png" } },
+  "wordCount": "1585",
+  "datePublished": "2026-02-18T08:00:00+00:00",
+  "dateModified": "2026-02-23T08:00:00+00:00"
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+
+  <style>
+    /* EDGE OKLCH COLOR ENGINE (INDIGO #4F46E5 & AMBER THEME) */
+    :root {
+      /* Mathematically scaled Indigo (Primary: #4F46E5) */
+      --color-indigo-50: oklch(97% 0.014 283.34);
+      --color-indigo-100: oklch(93% 0.034 283.22);
+      --color-indigo-200: oklch(88% 0.058 283.11);
+      --color-indigo-300: oklch(81% 0.106 283.05);
+      --color-indigo-400: oklch(71% 0.165 283.08);
+      --color-indigo-500: oklch(62% 0.214 283.16);
+      --color-indigo-600: oklch(54% 0.226 283.3); /* Matches exactly #4F46E5 */
+      --color-indigo-700: oklch(47% 0.2 284.14);
+      --color-indigo-800: oklch(39% 0.163 284.5);
+      --color-indigo-900: oklch(34% 0.138 284.66);
+      
+      /* Complementary Amber for glowing text/accents */
+      --color-amber-400: oklch(82.8% 0.189 84.429);
+      --color-amber-500: oklch(76.9% 0.188 70.08);
+    }
+
+    /* VERCEL-STYLE RAIN GRID ENGINE */
+    .vercel-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(to right, oklch(from var(--color-indigo-600) l c h / 0.08) 1px, transparent 1px);
+      background-size: 64px 100%;
+      mask-image: linear-gradient(to bottom, black 10%, transparent 90%);
+      -webkit-mask-image: linear-gradient(to bottom, black 10%, transparent 90%);
+      z-index: 0;
+    }
+
+    .rain-line {
+      position: absolute;
+      top: -150px;
+      width: 1px;
+      height: 120px;
+      background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.9), var(--color-indigo-500), transparent);
+      box-shadow: 0 0 12px oklch(from var(--color-indigo-500) l c h / 0.4);
+      animation: rain var(--duration) var(--delay) linear infinite;
+      opacity: 0;
+    }
+
+    .line-1 { left: 64px; --duration: 3s; --delay: 0s; }
+    .line-2 { left: 256px; --duration: 4.5s; --delay: 1s; }
+    .line-3 { left: 448px; --duration: 3.2s; --delay: 2.5s; }
+    .line-4 { left: 640px; --duration: 5s; --delay: 0.5s; }
+    .line-5 { left: 832px; --duration: 3.8s; --delay: 1.8s; }
+    .line-6 { left: 1088px; --duration: 4.2s; --delay: 0.2s; }
+    .line-7 { left: 1280px; --duration: 3.5s; --delay: 1.2s; }
+
+    @keyframes rain {
+      0% { transform: translateY(0); opacity: 0; }
+      10% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+
+    .reading-bar { position: fixed; top: 0; left: 0; height: 4px; background: linear-gradient(to right, var(--color-indigo-400), var(--color-indigo-600)); z-index: 9999; width: 0%; transition: width 0.1s ease-out; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+
+    .edge-prose h2 { color: #0f172a; font-weight: 900; font-size: 2rem; letter-spacing: -0.03em; margin-top: 3.5rem; margin-bottom: 1.5rem; }
+    .edge-prose p { color: #334155; font-size: 1.125rem; line-height: 1.85; margin-bottom: 1.75rem; }
+    .edge-prose strong { color: #0f172a; font-weight: 800; }
+    .edge-prose em { color: var(--color-indigo-600); font-style: normal; font-weight: 600; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .animate-float { animation: none !important; transform: none !important; }
+      .rain-line { display: none; }
+    }
+  </style>
+
+  <div id="read-progress" class="reading-bar"></div>
+
+  <header class="relative bg-white pt-32 md:pt-48 pb-20 md:pb-28 px-6 border-b border-gray-100 overflow-hidden">
+    <div class="w-full max-w-[1400px] mx-auto absolute inset-0 flex justify-center pointer-events-none">
+      <div class="vercel-grid"></div>
+      <div class="rain-line line-1"></div>
+      <div class="rain-line line-2"></div>
+      <div class="rain-line line-3"></div>
+      <div class="rain-line line-4"></div>
+      <div class="rain-line line-5"></div>
+      <div class="rain-line line-6"></div>
+      <div class="rain-line line-7"></div>
+    </div>
+    <div aria-hidden="true" class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] rounded-full blur-[100px] pointer-events-none" style="background-color: oklch(from var(--color-indigo-600) l c h / 0.06)"></div>
+
+    <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 items-center relative z-10">
+      <div class="flex-1 lg:pr-8 text-center lg:text-left">
+         <a href="/blog" class="inline-flex items-center gap-2 px-4 py-2 rounded-full border shadow-sm transition-colors mb-8 focus-visible:outline-none focus-visible:ring-2" style="background-color: white; border-color: var(--color-indigo-200); color: var(--color-indigo-600); outline-color: var(--color-indigo-400)" onmouseover="this.style.backgroundColor='var(--color-indigo-50)'" onmouseout="this.style.backgroundColor='white'">
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+            <span class="text-[10px] font-black uppercase tracking-[0.15em] text-slate-900">Back to Articles</span>
+         </a>
+         <h1 class="text-[clamp(2.5rem,5vw,4.5rem)] font-black text-slate-900 tracking-tight leading-[1.05] mb-6">
+           The Isnad <br class="hidden md:block" />
+           <span style="color: var(--color-indigo-600)">Paradigm.</span>
+         </h1>
+         <p class="text-lg md:text-xl text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-10">
+           A deep dive into why the Ijazah system remains the world's most verifiable "Information Ledger" for Quranic transmission.
+         </p>
+         <div class="flex items-center justify-center lg:justify-start gap-6 pt-8 border-t border-slate-100">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full text-white flex items-center justify-center font-black text-sm shadow-md" style="background-color: var(--color-indigo-900)">QA</div>
+              <div class="text-left">
+                <div class="text-sm font-bold text-slate-900 leading-none">Academic Review Board</div>
+                <div class="text-[11px] font-semibold text-slate-500 mt-1 uppercase tracking-wider">QuranAble</div>
+              </div>
+            </div>
+            <div class="w-px h-8 bg-slate-200"></div>
+            <div class="text-left">
+              <div class="text-sm font-bold text-slate-900 leading-none">6 Min Read</div>
+              <div class="text-[11px] font-semibold text-slate-500 mt-1 uppercase tracking-wider">Feb 18, 2026</div>
+            </div>
+         </div>
+      </div>
+
+      <div class="w-full lg:w-[45%] flex-shrink-0 flex justify-center lg:justify-end">
+        <div class="rounded-[3rem] md:rounded-[4rem] aspect-[4/3] w-full max-w-[500px] relative flex items-center justify-center border shadow-inner overflow-hidden" style="background-color: var(--color-indigo-50); border-color: var(--color-indigo-100)">
+            <div aria-hidden="true" class="absolute top-[-20%] right-[-20%] w-[120%] h-[120%] bg-white rounded-full blur-[80px] opacity-60"></div>
+            <div class="w-40 h-40 md:w-56 md:h-56 bg-white rounded-[2rem] md:rounded-[3rem] flex items-center justify-center border border-white relative z-10 animate-float" style="box-shadow: 0 30px 60px -15px oklch(from var(--color-indigo-600) l c h / 0.25)">
+                <svg class="w-20 h-20 md:w-28 md:h-28" style="color: var(--color-indigo-600)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                </svg>
+            </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="py-16 md:py-24 px-6 bg-white relative">
+    <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-20 items-start">
+      <article class="flex-1 min-w-0 edge-prose w-full max-w-3xl mx-auto lg:mx-0">
+        <p class="text-xl md:text-2xl font-bold text-slate-900 mb-12 leading-[1.6] tracking-tight">
+          In a world of digital noise, the preservation of the Quran depends on a 1,400-year-old human chain: <span style="color: var(--color-indigo-600)">The Isnad.</span>
+        </p>
+
+        <section id="s1" class="scroll-mt-32 border-t border-slate-100 pt-10">
+          <h2>I. The Anatomy of Oral Authorization</h2>
+          <p>To understand the <strong>Ijazah</strong>, one must first recognize that the Quran is, primarily, an acoustic Revelation. While the written script (Mushaf) is sacred, the true "source code" of the Quran lives in the soundwaves produced by a human throat.</p>
+          <p>An Ijazah is the formal, verified certificate proving that a student's soundwaves match the master's soundwaves with 100% precision. This teacher listens for the "Makharij" (articulation points), the "Sifaat" (letter characteristics), and the "Ghunnah" (nasalization duration). One slight error in tongue placement, and the recitation is stopped. This is <strong>Spiritual Quality Assurance</strong> at its highest level.</p>
+        </section>
+
+        <div class="not-prose my-16 border rounded-[2.5rem] p-10 md:p-14 relative overflow-hidden transition-all duration-500 hover:shadow-[0_40px_80px_-15px_oklch(from_var(--color-indigo-600)_l_c_h_/_0.3)]" 
+             style="background-color: var(--color-indigo-900); border-color: var(--color-indigo-800);">
+          
+          <div aria-hidden="true" class="absolute top-6 right-8 opacity-20 pointer-events-none">
+            <svg width="80" height="60" viewBox="0 0 75 56" fill="none" xmlns="http://www.w3.org/2000/svg" style="fill: var(--color-amber-400)">
+              <path d="M18.3 56C12.1 56 7.1 53.7 3.3 49.1C-0.5 44.5 -1.1 38.3 1.5 30.5L8.5 8.1H0V0H17.3L23.8 21.6C25.4 27.2 24.8 32.2 22 36.6C19.2 41 15.3 43.2 10.3 43.2C11.5 46 14.1 47.4 18.1 47.4H21.5V56H18.3ZM65.8 56C59.6 56 54.6 53.7 50.8 49.1C47 44.5 46.4 38.3 49 30.5L56 8.1H47.5V0H64.8L71.3 21.6C72.9 27.2 72.3 32.2 69.5 36.6C66.7 41 62.8 43.2 57.8 43.2C59 46 61.6 47.4 65.6 47.4H69V56H65.8Z"/>
+            </svg>
+          </div>
+
+          <div class="relative z-10">
+            <div class="absolute -left-10 md:-left-14 top-0 w-1.5 h-full rounded-full" style="background-color: var(--color-amber-400); box-shadow: 0 0 20px var(--color-amber-400)"></div>
+            <h3 class="text-3xl md:text-4xl font-black mb-6 tracking-tight" style="color: var(--color-amber-400)">The Oral Blockchain</h3>
+            
+            <p class="text-lg md:text-2xl leading-relaxed m-0 font-medium" style="color: rgba(255, 255, 255, 0.95);">
+              "The Isnad is a decentralized human ledger. Each Ijazah holder is a node of truth. If one person tries to alter the Word, the entire network identifies the anomaly instantly."
+            </p>
+          </div>
+        </div>
+
+        <section id="s2" class="scroll-mt-32 border-t border-slate-100 pt-10">
+          <h2>II. The Science of the Isnad (The Chain)</h2>
+          <p>The <strong>Isnad</strong> is the list of names documented on an Ijazah certificate. It serves as the student's pedagogical lineage: "I learned from Sheikh X, who learned from Sheikh Y, who learned from Imam Z..." back to the <strong>Sahaba (Companions)</strong> and the Prophet Muhammad (Peace Be Upon Him).</p>
+        </section>
+
+        <section id="s3" class="scroll-mt-32 border-t border-slate-100 pt-10 pb-10">
+          <h2>III. Verification Pillars in the Online Age</h2>
+          <div class="not-prose flex flex-col gap-8 mt-10">
+            <div class="flex gap-5 md:gap-6 bg-slate-50 p-6 rounded-3xl border border-slate-100 transition-colors" onmouseover="this.style.borderColor='var(--color-indigo-200)'" onmouseout="this.style.borderColor='transparent'">
+              <div class="w-12 h-12 rounded-2xl flex items-center justify-center font-black text-lg shrink-0 border" style="background-color: var(--color-indigo-50); color: var(--color-indigo-600); border-color: var(--color-indigo-100)">01</div>
+              <div>
+                <h4 class="text-lg font-bold text-slate-900 mb-2">Physical Document Audit</h4>
+                <p class="leading-relaxed font-medium m-0" style="color: #475569;">Every senior instructor must provide their signed and sealed Ijazah from a recognized world authority (such as Al-Azhar).</p>
+              </div>
+            </div>
+            <div class="flex gap-5 md:gap-6 bg-slate-50 p-6 rounded-3xl border border-slate-100 transition-colors" onmouseover="this.style.borderColor='var(--color-indigo-200)'" onmouseout="this.style.borderColor='transparent'">
+              <div class="w-12 h-12 rounded-2xl flex items-center justify-center font-black text-lg shrink-0 border" style="background-color: var(--color-indigo-50); color: var(--color-indigo-600); border-color: var(--color-indigo-100)">02</div>
+              <div>
+                <h4 class="text-lg font-bold text-slate-900 mb-2">Pedagogical Testing</h4>
+                <p class="leading-relaxed font-medium m-0" style="color: #475569;">Reciting is one skill; teaching is another. We test our tutors' ability to explain the theory behind the complex Tajweed rules.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </article>
+
+      <aside class="w-full lg:w-[320px] lg:sticky lg:top-32 shrink-0">
+        <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]">
+            <h4 class="text-[10px] font-black uppercase tracking-[0.2em] border-b border-slate-100 pb-4 mb-6" style="color: var(--color-indigo-600)">Navigational Map</h4>
+            <nav class="flex flex-col gap-4">
+                <a href="#s1" class="text-sm font-bold text-slate-600 transition-colors" onmouseover="this.style.color='var(--color-indigo-600)'" onmouseout="this.style.color='currentColor'">I. Oral Authorization</a>
+                <a href="#s2" class="text-sm font-bold text-slate-600 transition-colors" onmouseover="this.style.color='var(--color-indigo-600)'" onmouseout="this.style.color='currentColor'">II. The Eternal Chain</a>
+                <a href="#s3" class="text-sm font-bold text-slate-600 transition-colors" onmouseover="this.style.color='var(--color-indigo-600)'" onmouseout="this.style.color='currentColor'">III. Verification Pillars</a>
+            </nav>
+            <div class="mt-10 pt-8 border-t border-slate-100">
+                <p class="text-sm font-bold text-slate-900 mb-4 leading-tight">Test your level with an Ijazah holder.</p>
+                <a href="/funnels/signup" class="flex items-center justify-center w-full py-3.5 text-white rounded-xl font-bold text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all focus-visible:outline-none focus-visible:ring-4" style="background-color: var(--color-indigo-600); box-shadow: 0 10px 20px -10px rgba(79, 70, 229, 0.5); outline-color: var(--color-indigo-300)">
+                  Free Evaluation
+                </a>
+            </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <section class="bg-slate-50 py-24 md:py-32 px-6 border-t border-slate-200 text-center">
+    <div class="max-w-3xl mx-auto flex flex-col items-center">
+        <div class="w-16 h-16 bg-white border border-slate-200 shadow-sm rounded-2xl flex items-center justify-center mb-8" style="color: var(--color-indigo-600)">
+            <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+        </div>
+        <h2 class="text-[clamp(2rem,4vw,3.5rem)] font-black text-slate-900 tracking-tight leading-[1.1] mb-6">Join the Chain.</h2>
+        <p class="text-lg md:text-xl text-slate-600 font-medium leading-relaxed mb-10 max-w-2xl">Don't settle for unverified learning. Secure your spiritual legacy with a 100% free diagnostic session today.</p>
+        <a href="/funnels/signup" class="inline-flex items-center justify-center gap-2 px-10 py-5 bg-[var(--color-indigo-600)] text-white text-lg font-black rounded-2xl shadow-[0_15px_30px_-10px_rgba(79,70,229,0.4)] hover:-translate-y-1 transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-indigo-300">
+            Claim Your Free Audit
+            <svg aria-hidden="true" class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+        </a>
+    </div>
+  </section>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+      const readBar = document.getElementById('read-progress');
+      if (readBar) readBar.style.width = scrolled + "%";
+    });
+  </script>
+</BaseLayout>

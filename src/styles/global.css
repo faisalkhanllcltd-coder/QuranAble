@@ -1,0 +1,45 @@
+﻿@import "tailwindcss";
+
+/* Force Tailwind v4 to scan your entire Astro environment */
+@source "../**/*.astro";
+@source "../**/*.js";
+@source "../**/*.md";
+
+@theme {
+  /* 1. BRANDING COLORS */
+  --color-brand-magenta: #d600aa;
+  --color-brand-indigo-deep: #190649;
+  --color-brand-indigo-mid: #4122aa;
+  --color-brand-blurple: #512bd4;
+  --color-brand-lavender: #dcd5f6;
+  --color-brand-blue-classic: #005293;
+  --color-brand-blue-bright: #0067b8;
+  
+  /* 2. UI GRAYSCALE */
+  --color-ui-smoke: #f5f5f5;
+  --color-ui-grey-light: #f2f2f2;
+  --color-ui-platinum: #e6e6e6;
+  --color-ui-charcoal: #424242;
+  --color-ui-black-raisin: #242424;
+  --color-ui-black-eerie: #141414;
+
+  /* 3. EXPERT ADDITION: FONT SYSTEM */
+  /* This maps the Inter font natively into Tailwind v4 */
+  --font-inter: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* 4. BASE LAYER SETUP */
+@layer base {
+  body {
+    /* We apply the font and layout directly to the body so it never breaks */
+    @apply bg-white text-ui-black-eerie font-inter antialiased min-h-screen flex flex-col;
+  }
+}
+
+/* 5. CUSTOM UTILITIES */
+@layer utilities {
+  /* Stripe-style high-contrast background utility */
+  .edge-gradient {
+    background: linear-gradient(135deg, var(--color-brand-indigo-deep) 0%, var(--color-brand-indigo-mid) 100%);
+  }
+}

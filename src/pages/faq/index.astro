@@ -1,0 +1,291 @@
+---
+// src/pages/faq/index.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// SEO & Metadata Variables
+const pageTitle = "Frequently Asked Questions | QuranAble";
+const pageDescription = "Everything you need to know about QuranAble's courses, tuition fees, and general operations.";
+
+// Exactly 30 High-Value Q&As categorized (10 per tab)
+const faqCategories = [
+  {
+    id: "courses",
+    title: "About Courses",
+    icon: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253",
+    items: [
+      { q: "What specific Quran courses do you offer?", a: "We offer comprehensive tracks including Noorani Qaida (for absolute beginners), Tajweed Mastery, Fluent Recitation (Nazra), Hifz (Memorization), and Islamic Studies." },
+      { q: "Do I need prior knowledge of Arabic to join?", a: "Not at all. Our beginner courses are specifically designed to take you from learning the basic Arabic alphabet to fluent, confident recitation." },
+      { q: "Are the classes 1-on-1 or in groups?", a: "All of our standard educational tracks are strictly 1-on-1. This ensures that the tutor is 100% focused on your specific articulation, pace, and personal progress." },
+      { q: "Who are the QuranAble tutors?", a: "Our tutors are elite, certified scholars. Every tutor undergoes a rigorous 3-step vetting process, background checks, and holds a verifiable Ijazah (chain of transmission)." },
+      { q: "Can I request a female tutor?", a: "Yes, absolutely. We maintain strict adherence to Islamic principles and provide highly qualified female tutors for sisters and young children upon request." },
+      { q: "How long does it take to memorize the Quran?", a: "Memorization varies by student based on age, dedication, and class frequency. With consistent 5-day-a-week classes, dedicated students typically complete Hifz in 2 to 4 years." },
+      { q: "What is the Noorani Qaida?", a: "It is the foundational booklet used worldwide to teach beginners the Arabic alphabet, basic pronunciation rules, and how to connect letters to read the Quran." },
+      { q: "Do you provide the necessary course materials?", a: "Yes. All digital materials, including interactive Mushafs, tajweed slides, and digital workbooks, are provided free of charge within our Smart Space." },
+      { q: "How are student progress and grades tracked?", a: "Parents and students have access to a secure dashboard where tutors leave weekly performance reports, behavioral feedback, and upcoming milestone goals." },
+      { q: "Do I get a certificate upon completion?", a: "Yes. Upon successfully completing a course and passing our internal testing, you will receive a verified QuranAble certificate. Advanced students can earn a formal Ijazah." }
+    ]
+  },
+  {
+    id: "fees",
+    title: "About Fees",
+    icon: "M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z",
+    items: [
+      { q: "How much do the courses cost?", a: "We offer tailored monthly subscriptions based on how many days a week you want to study. Our pricing is highly competitive and accessible globally. Please visit our Pricing page for exact regional tiers." },
+      { q: "Do you offer a Free Trial?", a: "Yes! Every new student is entitled to a free, 30-minute diagnostic session with a senior tutor to assess their level and experience our interactive classroom. No credit card is required." },
+      { q: "Are there any hidden fees, registration costs, or contracts?", a: "Zero. Our pricing is 100% transparent. You operate on a simple month-to-month subscription with no setup fees and absolutely no lock-in contracts." },
+      { q: "What payment methods do you accept?", a: "We accept all major credit and debit cards (Visa, Mastercard, AMEX) securely processed via Stripe, as well as PayPal and Apple/Google Pay." },
+      { q: "Do you offer family discounts for multiple students?", a: "Yes. We encourage families to learn together. We offer a dedicated Family Plan that provides a 15% to 20% discount when enrolling 2 or more students from the same household." },
+      { q: "Can I cancel my subscription at any time?", a: "Yes. You can cancel, pause, or upgrade your monthly subscription at any time directly from your user dashboard with a single click." },
+      { q: "Is there a refund or money-back guarantee?", a: "We offer a 14-day, 100% money-back guarantee. If you are not completely satisfied with your tutor or the platform within the first two weeks, we will refund your payment entirely." },
+      { q: "What happens to my fee if I miss a scheduled class?", a: "If you notify us at least 12 hours in advance via the dashboard, you will be granted a free makeup class. Unexcused no-shows are counted as completed classes." },
+      { q: "Can I pause my subscription for holidays or travel?", a: "Yes. You can pause your subscription for up to 30 days without losing your assigned tutor or your preferred time slot." },
+      { q: "Do you offer financial aid for those who cannot afford tuition?", a: "Yes. We operate a Sadaqah fund to assist dedicated students facing financial hardship. Contact our support team directly to apply for a subsidized scholarship." }
+    ]
+  },
+  {
+    id: "general",
+    title: "General Inquiries",
+    icon: "M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
+    items: [
+      { q: "What exactly is QuranAble?", a: "QuranAble is a premium, global online academy that merges 1,400 years of traditional Islamic scholarship (Isnad) with state-of-the-art educational technology." },
+      { q: "What equipment do I need to attend classes?", a: "You simply need a stable internet connection, a desktop, laptop, or tablet, and a working microphone and camera. A headset is recommended for better audio quality." },
+      { q: "Do I need to download Skype or Zoom?", a: "No. QuranAble uses a custom-built, browser-based 'Smart Space' engineered specifically for Quranic pedagogy. You just log in and click 'Join Class'." },
+      { q: "Is the video feed secure, especially for children?", a: "Security is our highest priority. All video feeds are strictly peer-to-peer encrypted. We do not record sessions without explicit written consent from the parents." },
+      { q: "What time zones do you operate in?", a: "We operate globally, 24/7. Whether you are in New York, London, Dubai, or Sydney, we have expert tutors available to match your exact schedule." },
+      { q: "What happens if my assigned tutor is absent?", a: "In the rare event of an emergency absence, we will immediately provide a highly qualified substitute tutor, or offer you a flexible makeup class at your convenience." },
+      { q: "Can I communicate with the tutor outside of class?", a: "For privacy and safety, all communication between parents/students and tutors must take place through our secure, monitored dashboard messaging system." },
+      { q: "How do I change my weekly schedule?", a: "You can easily request a schedule change or shift your class times directly through your dashboard. Our support team will adjust it based on tutor availability." },
+      { q: "Can parents actively monitor their child's classes?", a: "Yes. Parents can sit in on the classes, review the weekly progression reports on the dashboard, and request secure recordings of the sessions for review." },
+      { q: "How quickly can I start after signing up?", a: "Instantly. Once you sign up for your Free Trial, you will be directed to an automated calendar to book your first session within 24 hours." }
+    ]
+  }
+];
+
+// INJECTED SCHEMA: FAQPage + Breadcrumbs for Google SEO
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://quranable.com/" },
+        { "@type": "ListItem", "position": 2, "name": "FAQ", "item": "https://quranable.com/faq" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqCategories.flatMap(cat => cat.items.map(item => ({
+        "@type": "Question",
+        "name": item.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.a
+        }
+      })))
+    }
+  ]
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+  <style>
+    /* STANDARDIZED HOMEPAGE DNA */
+    .hero-grid-bg { background-image: linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px); background-size: 40px 40px; mask-image: radial-gradient(circle at center, black 30%, transparent 80%); -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%); }
+    .stripe-cta-bg { background-color: #0a2540; position: relative; overflow: hidden; }
+    .stripe-cta-bg::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background-image: radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.4) 0px, transparent 40%), radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.4) 0px, transparent 40%); z-index: 0; }
+    .stripe-grid { position: absolute; inset: -100%; background-image: linear-gradient(to right, rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 50px 50px; transform: perspective(500px) rotateX(60deg); animation: moveGrid 15s linear infinite; z-index: 1; }
+    @keyframes moveGrid { 0% { transform: perspective(500px) rotateX(60deg) translateY(0); } 100% { transform: perspective(500px) rotateX(60deg) translateY(50px); } }
+
+    /* Bulletproof Accordion Reset */
+    details { transition: all 0.3s ease; }
+    details > summary { list-style: none; outline: none; display: block; cursor: pointer; }
+    details > summary::-webkit-details-marker { display: none; }
+    
+    /* Smooth animations */
+    details[open] summary ~ div { animation: slideDown 0.3s ease-out forwards; transform-origin: top; }
+    @keyframes slideDown { 0% { opacity: 0; transform: translateY(-8px); } 100% { opacity: 1; transform: translateY(0); } }
+    
+    .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+    @keyframes fadeIn { 0% { opacity: 0; transform: translateY(10px); } 100% { opacity: 1; transform: translateY(0); } }
+
+    /* EDGE A11Y FIX: Disable animations for reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+
+  <header aria-label="FAQ Header" class="relative overflow-hidden bg-slate-50 pt-32 md:pt-44 pb-16 md:pb-24 px-6 border-b border-gray-200">
+    <div aria-hidden="true" class="absolute inset-0 z-0 pointer-events-none hero-grid-bg opacity-50"></div>
+    <div aria-hidden="true" class="absolute top-[-10%] right-1/4 w-[400px] h-[400px] bg-pink-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto relative z-10 text-center">
+      
+      <nav aria-label="Breadcrumb" class="mb-6 flex justify-center">
+        <ol class="flex items-center space-x-2 text-sm text-slate-500 font-semibold list-none p-0 m-0">
+          <li><a href="/" class="hover:text-indigo-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded px-1">Home</a></li>
+          <li>
+            <svg class="w-4 h-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/>
+            </svg>
+          </li>
+          <li class="text-slate-800" aria-current="page">FAQ</li>
+        </ol>
+      </nav>
+
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-gray-200 shadow-sm mb-8">
+        <svg aria-hidden="true" class="w-4 h-4 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        <span class="text-[10px] font-black uppercase tracking-widest text-indigo-950">Help Center</span>
+      </div>
+
+      <h1 class="text-[clamp(2.2rem,5vw,4rem)] font-black text-indigo-950 tracking-tighter mb-6 leading-[1.05]">
+        Frequently Asked <br class="hidden md:block" />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-violet-500">Questions.</span>
+      </h1>
+      
+      <p class="text-[clamp(1rem,2vw,1.15rem)] text-slate-600 max-w-2xl mx-auto leading-relaxed font-medium">
+        Everything you need to know about joining QuranAble, our teaching methodology, and the digital classroom experience.
+      </p>
+    </div>
+  </header>
+
+  <main aria-label="FAQ Database" class="bg-white py-16 md:py-32 px-4 md:px-6 relative z-20">
+    <div class="max-w-4xl mx-auto w-full">
+      
+      <div class="flex justify-center mb-10 md:mb-16 w-full">
+        <div class="inline-flex items-center p-1.5 bg-slate-50 border border-gray-200 rounded-[1.5rem] shadow-inner overflow-x-auto max-w-full snap-x" role="tablist" aria-label="FAQ Categories">
+          {faqCategories.map((cat, index) => (
+            <button 
+              type="button" 
+              role="tab" 
+              id={`tab-${cat.id}`}
+              aria-selected={index === 0 ? "true" : "false"} 
+              aria-controls={`panel-${cat.id}`}
+              data-target={cat.id}
+              class="faq-tab-btn flex items-center gap-2.5 px-5 md:px-6 py-3 rounded-[1.25rem] transition-all duration-300 whitespace-nowrap outline-none focus-visible:ring-2 focus-visible:ring-pink-500 flex-shrink-0 snap-start group aria-selected:bg-white aria-selected:text-indigo-950 aria-selected:shadow-sm aria-selected:border aria-selected:border-gray-200 text-slate-500 hover:text-indigo-950 border border-transparent font-bold text-sm md:text-[15px] cursor-pointer"
+            >
+              <div class="w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300 group-aria-selected:bg-pink-500/10 group-aria-selected:text-pink-600 bg-gray-200/50 text-slate-400 group-hover:bg-pink-500/5 group-hover:text-pink-500">
+                <svg aria-hidden="true" class="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d={cat.icon} /></svg>
+              </div>
+              {cat.title}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div class="relative w-full min-h-[600px]">
+        {faqCategories.map((cat, index) => (
+          <div 
+            id={`panel-${cat.id}`} 
+            role="tabpanel"
+            aria-labelledby={`tab-${cat.id}`}
+            class={`faq-tab-panel w-full transition-all duration-500 focus:outline-none ${index === 0 ? 'block animate-fade-in' : 'hidden'}`}
+          >
+            <div class="text-center mb-8 md:mb-10">
+              <h2 class="text-2xl md:text-3xl font-black text-indigo-950 tracking-tight">{cat.title} FAQs</h2>
+              <p class="text-sm md:text-base text-slate-600 font-medium mt-2">Answers regarding {cat.title.toLowerCase()}.</p>
+            </div>
+
+            <div class="space-y-3 md:space-y-4 w-full">
+              {cat.items.map((item, i) => (
+                <details class="group bg-white border border-gray-200 rounded-[1.25rem] md:rounded-[1.5rem] transition-all duration-300 hover:border-pink-300 hover:shadow-md hover:shadow-pink-500/5 open:bg-slate-50 open:border-gray-200 open:shadow-inner w-full" open={i === 0 ? true : undefined}>
+                  <summary class="focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-pink-500 focus-visible:rounded-[1.25rem] block w-full p-5 md:p-7">
+                    <div class="flex items-start md:items-center justify-between gap-4 w-full">
+                      <h3 class="text-[15px] md:text-lg font-bold text-indigo-950 leading-snug group-open:text-pink-600 transition-colors text-left flex-1">
+                        {item.q}
+                      </h3>
+                      <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white border border-gray-200 group-hover:bg-pink-500/5 flex items-center justify-center flex-shrink-0 text-indigo-950 group-open:bg-pink-500 group-open:text-white group-open:border-pink-500 transition-all duration-500 transform group-open:rotate-180 relative mt-0.5 md:mt-0 shadow-sm">
+                        <svg aria-hidden="true" class="w-4 h-4 md:w-5 md:h-5 absolute transition-opacity duration-300 group-open:opacity-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+                        <svg aria-hidden="true" class="w-4 h-4 md:w-5 md:h-5 absolute opacity-0 transition-opacity duration-300 group-open:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" /></svg>
+                      </div>
+                    </div>
+                  </summary>
+                  <div class="px-5 md:px-7 pb-6 pt-0 w-full">
+                    <div aria-hidden="true" class="w-full h-px bg-gradient-to-r from-pink-500/20 to-transparent mb-5"></div>
+                    <p class="text-sm md:text-[15px] text-slate-600 leading-relaxed font-medium">
+                      {item.a}
+                    </p>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </main>
+
+  <section aria-label="Final Call to Action" class="stripe-cta-bg py-16 md:py-20 text-center border-t border-gray-800">
+  <div class="stripe-grid"></div>
+  
+  <div class="w-full max-w-[1200px] mx-auto px-4 relative z-10 flex flex-col items-center">
+    <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl md:rounded-[2rem] p-6 sm:p-10 md:p-12 shadow-2xl max-w-2xl w-full">
+       
+       <h2 class="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight leading-tight">Still have questions?</h2>
+       <p class="text-base md:text-lg text-slate-300 max-w-lg mx-auto mb-8 leading-relaxed">
+         If you couldn't find what you were looking for, our academic advisors are available 24/7 to assist you directly.
+       </p>
+       
+       <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center w-full">
+         <a href="/contact" class="flex items-center justify-center w-full sm:w-auto gap-2 px-8 py-3.5 md:py-4 text-base font-bold rounded-xl transition-all duration-200 text-white bg-gradient-to-r from-pink-500 to-violet-500 shadow-[0_4px_14px_rgba(236,72,153,0.3)] hover:-translate-y-[1px] hover:shadow-[0_6px_20px_rgba(236,72,153,0.4)] hover:brightness-105 border border-white/20 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-pink-400">
+            Contact Support
+         </a>
+         <a href="/funnels/signup" class="flex items-center justify-center w-full sm:w-auto gap-2 px-8 py-3.5 md:py-4 text-base font-bold rounded-xl transition-all duration-200 text-white bg-white/5 hover:bg-white/10 border border-white/20 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white">
+            Start Free Trial
+         </a>
+       </div>
+
+    </div>
+  </div>
+</section>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', function() {
+      const tabBtns = document.querySelectorAll('.faq-tab-btn');
+      const tabPanels = document.querySelectorAll('.faq-tab-panel');
+
+      if (!tabBtns.length || !tabPanels.length) return;
+
+      tabBtns.forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('data-target');
+          
+          // 1. Reset all tabs
+          tabBtns.forEach(function(b) { 
+            b.setAttribute('aria-selected', 'false'); 
+          });
+          
+          // 2. Safely hide all panels using ONLY Tailwind classes
+          tabPanels.forEach(function(p) {
+            p.classList.remove('block', 'animate-fade-in');
+            p.classList.add('hidden');
+          });
+
+          // 3. Set selected tab
+          this.setAttribute('aria-selected', 'true');
+
+          // 4. Show corresponding panel and manage focus for A11y
+          const activePanel = document.getElementById('panel-' + targetId);
+          if (activePanel) {
+            activePanel.classList.remove('hidden');
+            void activePanel.offsetWidth; // Trigger reflow for animation
+            activePanel.classList.add('block', 'animate-fade-in');
+            
+            // EDGE A11Y FIX: Move focus to the new panel without jumping the scroll position
+            activePanel.setAttribute('tabindex', '-1');
+            activePanel.focus({ preventScroll: true });
+          }
+        });
+      });
+    });
+  </script>
+
+</BaseLayout>

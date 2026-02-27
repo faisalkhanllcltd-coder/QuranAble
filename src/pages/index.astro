@@ -1,17 +1,457 @@
+﻿---
+// src/pages/index.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+
+// Hero Image
+import heroImage from '../assets/images/hero-quran-classes.jpg';
+
+// Photography for the Persona Cards
+import kidPhoto from '../assets/images/kid-photo.jpg';
+import adultPhoto from '../assets/images/adult-photo.jpg';
+import sisterPhoto from '../assets/images/sister-photo.jpg';
+
+// Photography for Academic Standards
+import mainStandardImage from '../assets/images/authentic-quran-mushaf-tajweed-recitation.jpg';
+import accentStandardImage from '../assets/images/verified-ijazah-quran-scholar-teaching-student.jpg';
+
+const title = "QuranAble | Premium Online Quran Classes & Ijazah Scholars";
+const description = "Master the Quran online with Ijazah-certified scholars. Private, 1-on-1 classes for kids, adults, and sisters. Start your free trial today.";
+
+// Advanced JSON-LD Schema (Organization + FAQ)
+const schemaData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "EducationalOrganization",
+      "name": "QuranAble",
+      "url": "https://quranable.com",
+      "logo": "https://quranable.com/logo.png",
+      "description": description,
+      "offers": {
+        "@type": "Offer",
+        "category": "Online Classes",
+        "availability": "https://schema.org/InStock"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What if I or my child are absolute beginners?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Perfect! That is exactly what the Noorani Qaida curriculum is for. We start from the very beginning (the alphabet) and patiently build up to reading the full Mushaf."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I choose a female tutor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. We have a dedicated, 100% private ecosystem for sisters taught exclusively by highly qualified female scholars."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does a typical class last?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our standard 1-on-1 sessions are 30 minutes long. Pedagogical studies consistently show this is the optimal duration to maintain high focus and retention, especially for online learning."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you teach adults who want to memorize (Hifz)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We use specialized Spaced Repetition Systems (SRS) specifically designed for adult learners. This helps you balance your memorization goals with a busy professional or family schedule."
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
----
+<BaseLayout title={title} description={description}>
+  <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+  <style>
+    /* PURGED: Only keeping what Tailwind cannot do natively */
+    @keyframes smoothFloat { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
+    @keyframes slowBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+    @keyframes shimmer { 0% { transform: translateX(-100%) skewX(-15deg); } 100% { transform: translateX(200%) skewX(-15deg); } }
+    @keyframes sweep { 0% { opacity: 0; transform: translateY(-10px); } 100% { opacity: 1; transform: translateY(0); } }
+    @keyframes moveGrid { 0% { transform: perspective(500px) rotateX(60deg) translateY(0); } 100% { transform: perspective(500px) rotateX(60deg) translateY(50px); } }
+
+    .animate-live-float { animation: smoothFloat 6s ease-in-out infinite; }
+    .animate-live-breathe { animation: slowBreathe 12s ease-in-out infinite; }
+    .animate-shimmer { animation: shimmer 2.5s infinite; }
+
+    /* FAQ ACCORDION SMOOTH FIX */
+    details > summary { list-style: none; cursor: pointer; }
+    details > summary::-webkit-details-marker { display: none; }
+    details[open] summary ~ * { animation: sweep .3s ease-in-out; }
+
+    /* BACKGROUNDS */
+    .stripe-cta-bg { background-color: #0a2540; position: relative; overflow: hidden; }
+    .stripe-cta-bg::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background-image: radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.4) 0px, transparent 40%), radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.4) 0px, transparent 40%); z-index: 0; }
+    .stripe-grid { position: absolute; inset: -100%; background-image: linear-gradient(to right, rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.07) 1px, transparent 1px); background-size: 50px 50px; transform: perspective(500px) rotateX(60deg); animation: moveGrid 15s linear infinite; z-index: 1; }
+
+    /* DeepSeek Optimization: Extracted Hero Grid */
+    .hero-grid-bg {
+      background-image: linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+      -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+    }
+  </style>
+
+  <header aria-label="Hero Introduction" class="relative overflow-hidden bg-white py-24 lg:py-[120px]">
+    <div class="absolute inset-0 z-0 pointer-events-none hero-grid-bg"></div>
+    
+    <div class="w-full max-w-[1200px] mx-auto px-6 relative z-10">
+      <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-20 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold border border-gray-200 bg-gray-50 text-gray-700 mb-6 shadow-sm">
+            <svg aria-hidden="true" class="w-3.5 h-3.5 text-pink-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+            Global Edge Learning Infrastructure
+          </div>
+          
+          <h1 class="text-[clamp(2.2rem,5vw,4rem)] font-black leading-[1.1] tracking-tight mb-5 text-gray-900">
+            Master the Quran with <br/>
+            <span class="bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent">Verified Scholars.</span>
+          </h1>
+          
+          <p class="text-[clamp(1rem,2vw,1.15rem)] leading-relaxed font-medium text-gray-600 mb-8 max-w-[500px]">
+            Premium, 1-on-1 online Quran classes engineered for absolute precision. From gamified pediatric classrooms to private adult Hifz tracking. Learn on your schedule, anywhere in the world.
+          </p>
+          
+          <div class="flex flex-wrap gap-3 items-center">
+            <a href="/funnels/signup" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-base font-bold rounded-lg transition-all duration-200 text-white bg-gradient-to-r from-pink-500 to-violet-500 shadow-[0_4px_14px_rgba(236,72,153,0.3)] hover:-translate-y-[1px] hover:shadow-[0_6px_20px_rgba(236,72,153,0.4)] hover:brightness-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-pink-500">
+              Start Free Trial Class
+              <svg aria-hidden="true" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            </a>
+            <a href="#pathways" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-base font-semibold rounded-lg bg-white text-gray-900 border border-gray-200 transition-all duration-200 hover:border-gray-400 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gray-300">
+              Explore Programs
+            </a>
+          </div>
+        </div>
+
+        <div class="relative hidden lg:block">
+          <div class="absolute inset-0 bg-gradient-to-tr from-pink-500/10 to-indigo-500/10 rounded-[1.5rem] transform rotate-2 scale-105 blur-xl"></div>
+          
+          <Image 
+            src={heroImage} 
+            alt="Student learning Quran online with a certified QuranAble scholar" 
+            class="relative z-10 w-full h-auto rounded-[1.5rem] border border-gray-200 shadow-xl object-cover aspect-[4/3]"
+            loading="eager"
+            decoding="sync"
+            fetchpriority="high"
+            format="webp"
+          />
+
+          <div class="absolute -bottom-6 -left-8 bg-white/90 backdrop-blur-md border border-gray-100 rounded-2xl p-4 shadow-2xl z-20 flex items-center gap-4 hover:scale-105 transition-transform">
+             <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center relative">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-40"></span>
+                <svg aria-hidden="true" class="w-6 h-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+             </div>
+             <div>
+               <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest">Beginner Friendly</p>
+               <p class="text-sm font-black text-gray-900">Expert Tutors</p>
+             </div>
+          </div>
+
+          <div class="absolute -top-6 -right-6 bg-white/90 backdrop-blur-md border border-gray-100 rounded-2xl p-4 shadow-2xl z-20 flex items-center gap-4 hover:scale-105 transition-transform overflow-hidden group">
+             <div class="absolute inset-0 w-[200%] bg-gradient-to-r from-transparent via-white/80 to-transparent animate-shimmer pointer-events-none z-30"></div>
+             <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center relative z-10">
+                <svg aria-hidden="true" class="w-6 h-6 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+             </div>
+             <div class="z-10 relative">
+               <p class="text-[11px] font-bold text-gray-400 uppercase tracking-widest">Verified Standard</p>
+               <p class="text-sm font-black text-gray-900">Parent Approved</p>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <aside aria-label="Global Trust Indicators" class="bg-white border-y border-gray-100 py-8">
+    <div class="w-full max-w-[1200px] mx-auto px-6 flex flex-wrap justify-center gap-6 md:gap-12 items-center text-sm font-semibold text-gray-500">
+      <div class="tracking-[0.15em] uppercase text-gray-500">Trusted globally across</div>
+      <ul class="flex items-center gap-6 text-gray-800 font-bold m-0 p-0 list-none">
+        <li>UK <span aria-hidden="true" class="text-gray-400 font-normal ml-6">|</span></li>
+        <li>USA <span aria-hidden="true" class="text-gray-400 font-normal ml-6">|</span></li>
+        <li>UAE <span aria-hidden="true" class="text-gray-400 font-normal ml-6">|</span></li>
+        <li>KSA <span aria-hidden="true" class="text-gray-400 font-normal ml-6">|</span></li>
+        <li>AUS</li>
+      </ul>
+    </div>
+  </aside>
+
+  <section id="pathways" class="bg-slate-50 py-24 lg:py-[100px]">
+    <div class="w-full max-w-[1200px] mx-auto px-6">
+      <div class="text-center max-w-[700px] mx-auto mb-16">
+        <h2 class="text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-[1.15] tracking-tight text-indigo-950 mb-4">Who is learning today?</h2>
+        <p class="text-lg text-gray-600 leading-relaxed">We built three distinct digital environments, each engineered with specialized pedagogy and UI to fit the exact needs of the student.</p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <article class="relative bg-white border border-gray-100 rounded-[1.25rem] p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full overflow-hidden group">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 opacity-80 group-hover:opacity-100 transition-opacity"></div>
+          
+          <div class="relative w-20 h-20 rounded-2xl mb-6 shadow-md border-2 border-white overflow-hidden bg-slate-100 flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute -inset-4 bg-cyan-200/30 blur-lg z-0 pointer-events-none"></div>
+            <Image src={kidPhoto} alt="Young student engaging in gamified Quran learning" class="relative z-10 w-full h-full object-cover" loading="lazy" decoding="async" format="webp" />
+          </div>
+          
+          <h3 class="text-[1.25rem] font-extrabold text-indigo-950 mb-2">
+            <a href="/online-quran-classes-for-kids" class="focus:outline-none focus-visible:ring-4 focus-visible:ring-cyan-400 rounded-md before:absolute before:inset-0 z-20">
+              Classes for Kids
+            </a>
+          </h3>
+          <p class="text-slate-500 text-[0.95rem] leading-relaxed mb-5 flex-grow">Gamified Smart Classrooms designed to prevent Zoom fatigue. Includes 100% parent monitoring.</p>
+          <div class="font-bold text-[0.9rem] text-cyan-500 flex items-center gap-1 relative z-10 pointer-events-none">Explore Kids Program <span aria-hidden="true" class="group-hover:translate-x-1 transition-transform">&rarr;</span></div>
+        </article>
+
+        <article class="relative bg-white border border-gray-100 rounded-[1.25rem] p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full overflow-hidden group">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 to-orange-500 opacity-80 group-hover:opacity-100 transition-opacity"></div>
+          
+          <div class="relative w-20 h-20 rounded-2xl mb-6 shadow-md border-2 border-white overflow-hidden bg-slate-100 flex-shrink-0 group-hover:scale-105 transition-transform duration-300" style="transition-delay: 50ms;">
+            <div class="absolute -inset-4 bg-amber-200/30 blur-lg z-0 pointer-events-none"></div>
+            <Image src={adultPhoto} alt="Adult professional learning Quran rules and Hifz online" class="relative z-10 w-full h-full object-cover" loading="lazy" decoding="async" format="webp" />
+          </div>
+          
+          <h3 class="text-[1.25rem] font-extrabold text-indigo-950 mb-2">
+            <a href="/online-quran-classes-for-adults" class="focus:outline-none focus-visible:ring-4 focus-visible:ring-amber-500 rounded-md before:absolute before:inset-0 z-20">
+              Classes for Adults
+            </a>
+          </h3>
+          <p class="text-slate-500 text-[0.95rem] leading-relaxed mb-5 flex-grow">Highly flexible 24/7 scheduling for professionals. Deep Tajweed correction and structured Hifz.</p>
+          <div class="font-bold text-[0.9rem] text-amber-500 flex items-center gap-1 relative z-10 pointer-events-none">Explore Adult Program <span aria-hidden="true" class="group-hover:translate-x-1 transition-transform">&rarr;</span></div>
+        </article>
+
+        <article class="relative bg-white border border-gray-100 rounded-[1.25rem] p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col h-full overflow-hidden group">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-rose-400 to-pink-500 opacity-80 group-hover:opacity-100 transition-opacity"></div>
+          
+          <div class="relative w-20 h-20 rounded-2xl mb-6 shadow-md border-2 border-white overflow-hidden bg-slate-100 flex-shrink-0 group-hover:scale-105 transition-transform duration-300" style="transition-delay: 100ms;">
+            <div class="absolute -inset-4 bg-rose-200/30 blur-lg z-0 pointer-events-none"></div>
+            <Image src={sisterPhoto} alt="Female student in a private, female-only Quran online environment" class="relative z-10 w-full h-full object-cover" loading="lazy" decoding="async" format="webp" />
+          </div>
+          
+          <h3 class="text-[1.25rem] font-extrabold text-indigo-950 mb-2">
+            <a href="/online-quran-classes-for-ladies" class="focus:outline-none focus-visible:ring-4 focus-visible:ring-rose-500 rounded-md before:absolute before:inset-0 z-20">
+              Classes for Sisters
+            </a>
+          </h3>
+          <p class="text-slate-500 text-[0.95rem] leading-relaxed mb-5 flex-grow">A 100% private, secure ecosystem. Learn comfortably with highly qualified, female scholars only.</p>
+          <div class="font-bold text-[0.9rem] text-rose-500 flex items-center gap-1 relative z-10 pointer-events-none">Explore Ladies Program <span aria-hidden="true" class="group-hover:translate-x-1 transition-transform">&rarr;</span></div>
+        </article>
+      </div>
+      
+      <div class="mt-12 text-center relative z-30">
+        <a href="/courses" class="text-indigo-600 font-semibold hover:text-pink-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-600 rounded px-2 py-1">View full course catalog &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-24 lg:py-[100px]">
+    <div class="w-full max-w-[1200px] mx-auto px-6">
+      <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-20 items-center">
+        <div class="bg-indigo-50/50 rounded-3xl p-10 flex flex-col justify-center items-center text-center border border-indigo-100">
+           <div class="w-14 h-14 bg-indigo-600 text-white rounded-xl flex items-center justify-center mb-6 shadow-md">
+             <svg aria-hidden="true" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+           </div>
+           <h3 class="text-xl font-bold text-indigo-900 mb-3">Start in 60 Seconds</h3>
+           <p class="text-slate-600 mb-6 text-sm">No credit card required. Pick a time that works for you, and we handle the rest.</p>
+           
+           <a href="/funnels/signup" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-base font-bold rounded-full transition-all duration-300 text-white bg-pink-500 shadow-[0_4px_12px_rgba(236,72,153,0.3)] hover:-translate-y-[2px] hover:shadow-[0_8px_16px_rgba(236,72,153,0.4)] w-full focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-pink-300">
+             Claim Your Free Trial
+           </a>
+        </div>
+        
+        <div class="flex flex-col justify-center pl-0 sm:pl-8">
+          <h2 class="text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-[1.15] tracking-tight text-indigo-950 mb-4">The easiest way to start learning.</h2>
+          <p class="text-lg text-gray-600 leading-relaxed mb-10">We removed the complex registration forms and rigid schedules. Getting started is as simple as 1-2-3.</p>
+          
+          <ol class="relative pl-12 border-l-2 border-indigo-50 ml-6 sm:ml-0 list-none m-0">
+            <li class="relative mb-10 group">
+              <div class="absolute -left-[60px] top-1 w-8 h-8 bg-white border-2 border-indigo-100 rounded-full flex items-center justify-center shadow-[0_0_10px_rgba(236,72,153,0.3)] z-10">
+                <div class="w-2.5 h-2.5 bg-pink-500 rounded-full animate-pulse"></div>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 mb-1">Book a Trial Schedule</h3>
+              <p class="text-slate-600 text-sm">Choose a day and time that fits your life using our instant booking calendar.</p>
+            </li>
+            
+            <li class="relative mb-10 group">
+              <div class="absolute -left-[60px] top-1 w-8 h-8 bg-white border-2 border-indigo-100 rounded-full flex items-center justify-center shadow-[0_0_10px_rgba(139,92,246,0.3)] z-10">
+                <div class="w-2.5 h-2.5 bg-indigo-500 rounded-full animate-pulse"></div>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 mb-1">Academic Evaluation</h3>
+              <p class="text-slate-600 text-sm">Meet with an advisor for 20 minutes so we can gauge your starting level and goals.</p>
+            </li>
+            
+            <li class="relative group">
+              <div class="absolute -left-[60px] top-1 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center shadow-md shadow-indigo-200 z-10">
+                <svg aria-hidden="true" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 mb-1">Get Matched & Learn</h3>
+              <p class="text-slate-600 text-sm">We assign your permanent tutor based on personality and learning style, and your journey begins.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Pricing and Transparency" class="bg-[#1e1b4b] py-[100px] border-y border-[#312e81]">
+    <div class="w-full max-w-[1200px] mx-auto px-6 text-center">
+      <h2 class="text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-[1.15] tracking-tight text-white mb-4">Premium Education. Transparent Pricing.</h2>
+      <p class="text-[#a5b4fc] text-[1.1rem] max-w-[600px] mx-auto mb-8 leading-relaxed">
+        No hidden fees. No long-term contracts. Just simple, month-to-month pricing based on how many days a week you want to learn.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+        <a href="/fee" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-base font-bold rounded-full transition-all duration-300 bg-white text-[#1e1b4b] hover:bg-gray-100 hover:-translate-y-[2px] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white">
+          View Tuition & Fees
+        </a>
+        <div class="flex items-center gap-2 text-indigo-200 text-sm font-semibold border border-indigo-700 bg-indigo-900/50 px-5 py-2.5 rounded-lg">
+           <svg aria-hidden="true" class="w-4 h-4 text-pink-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+           Multiple Currency Support
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Academic Standards" class="bg-white py-[120px]">
+    <div class="w-full max-w-[1200px] mx-auto px-6">
+      <div class="grid lg:grid-cols-2 bg-white rounded-[2rem] border border-slate-200 shadow-xl overflow-hidden">
+         
+         <div class="p-10 lg:p-14 flex flex-col justify-center z-20 bg-white">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold border border-gray-200 bg-gray-50 text-gray-700 w-max mb-6">
+               <span class="w-2 h-2 rounded-full bg-indigo-500"></span> Academic Standards
+            </div>
+            <h2 class="text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-[1.15] tracking-tight text-[#1e1b4b] mb-4">The Unbroken Chain.</h2>
+            <p class="text-slate-700 font-medium text-lg leading-relaxed mb-4">We reject the gig-economy tutoring model. At QuranAble, you do not just get a teacher; you get a scholar.</p>
+            <p class="text-slate-500 text-sm leading-relaxed mb-8">Every primary instructor holds a verified Ijazah—a continuous chain of transmission linking their recitation directly back to the Prophet Muhammad (PBUH). This guarantees your family receives authentic, uncorrupted knowledge.</p>
+            <div>
+              <a href="/about" class="inline-flex items-center justify-center gap-2 font-bold text-indigo-600 hover:text-pink-500 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-600 rounded px-2 py-1">
+                Read our methodology <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+         </div>
+         
+         <div class="bg-[#f8fafc] border-t lg:border-t-0 lg:border-l border-slate-200 p-8 sm:p-12 lg:p-16 flex items-center justify-center relative min-h-[550px]">
+            <div class="absolute w-[150%] h-[2px] bg-indigo-100 transform rotate-45 z-0"></div>
+
+            <div class="relative z-10 w-full max-w-lg lg:max-w-xl mt-4 mb-12 ml-6">
+               <div class="rounded-3xl shadow-xl border border-slate-200 overflow-hidden relative bg-white">
+                 <Image src={mainStandardImage} alt="Authentic Quran Mushaf open for Tajweed recitation" class="w-full h-auto object-cover animate-live-breathe" loading="lazy" decoding="async" format="webp" />
+               </div>
+
+               <div class="absolute -bottom-16 -left-10 sm:-left-16 w-[60%] sm:w-[55%] aspect-square z-20 animate-live-float">
+                 <Image src={accentStandardImage} alt="Verified Ijazah Quran Scholar teaching student online" class="w-full h-full object-cover rounded-2xl border-[8px] sm:border-[10px] border-white shadow-2xl bg-white" loading="lazy" decoding="async" format="webp" />
+                 <div class="absolute -bottom-3 right-4 bg-white/95 backdrop-blur-sm rounded-lg p-2 sm:p-2.5 text-center shadow-md border border-slate-100/50">
+                    <span class="text-[9px] sm:text-[11px] font-extrabold text-indigo-900 uppercase tracking-wide">Verified Ijazah</span>
+                 </div>
+               </div>
+            </div>
+         </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Frequently Asked Questions" class="bg-slate-50 py-[100px]">
+    <div class="w-full max-w-[1200px] mx-auto px-6">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        
+        <div class="lg:col-span-4 lg:sticky lg:top-32">
+          <div class="w-16 h-16 bg-white border border-slate-200 rounded-2xl flex items-center justify-center mb-6 shadow-sm">
+            <svg aria-hidden="true" class="w-8 h-8 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          </div>
+          <h2 class="text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-[1.15] tracking-tight text-[#1e1b4b] mb-4">Frequent<br/>Questions</h2>
+          <p class="text-slate-500 mb-8">Everything you need to know about our curriculum and how to get started.</p>
+          
+          <a href="/faq" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-base font-semibold rounded-lg bg-white text-gray-900 border border-gray-200 transition-all duration-200 hover:border-gray-400 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-gray-300">
+            Read all FAQs
+          </a>
+        </div>
+
+        <div class="lg:col-span-8 space-y-4">
+          
+          <details class="group bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+            <summary class="flex items-center justify-between text-slate-900 font-bold hover:text-indigo-600 transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-pink-500 rounded-lg p-1">
+              <h3 class="text-lg m-0 p-0 font-bold">What if I or my child are absolute beginners?</h3>
+              <span class="shrink-0 transition duration-300 group-open:rotate-45 text-slate-400 group-hover:text-indigo-600 ml-4">
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+              </span>
+            </summary>
+            <p class="mt-4 text-slate-600 text-sm leading-relaxed pr-8 border-t border-slate-100 pt-4">
+              Perfect! That is exactly what the Noorani Qaida curriculum is for. We start from the very beginning (the alphabet) and patiently build up to reading the full Mushaf.
+            </p>
+          </details>
+
+          <details class="group bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+            <summary class="flex items-center justify-between text-slate-900 font-bold hover:text-indigo-600 transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-pink-500 rounded-lg p-1">
+              <h3 class="text-lg m-0 p-0 font-bold">Can I choose a female tutor?</h3>
+              <span class="shrink-0 transition duration-300 group-open:rotate-45 text-slate-400 group-hover:text-indigo-600 ml-4">
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+              </span>
+            </summary>
+            <p class="mt-4 text-slate-600 text-sm leading-relaxed pr-8 border-t border-slate-100 pt-4">
+              Absolutely. We have a dedicated, 100% private ecosystem for sisters taught exclusively by highly qualified female scholars.
+            </p>
+          </details>
+
+          <details class="group bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+            <summary class="flex items-center justify-between text-slate-900 font-bold hover:text-indigo-600 transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-pink-500 rounded-lg p-1">
+              <h3 class="text-lg m-0 p-0 font-bold">How long does a typical class last?</h3>
+              <span class="shrink-0 transition duration-300 group-open:rotate-45 text-slate-400 group-hover:text-indigo-600 ml-4">
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+              </span>
+            </summary>
+            <p class="mt-4 text-slate-600 text-sm leading-relaxed pr-8 border-t border-slate-100 pt-4">
+              Our standard 1-on-1 sessions are 30 minutes long. Pedagogical studies consistently show this is the optimal duration to maintain high focus and retention, especially for online learning.
+            </p>
+          </details>
+
+          <details class="group bg-white rounded-2xl p-6 shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+            <summary class="flex items-center justify-between text-slate-900 font-bold hover:text-indigo-600 transition-colors focus:outline-none focus-visible:ring-4 focus-visible:ring-pink-500 rounded-lg p-1">
+              <h3 class="text-lg m-0 p-0 font-bold">Do you teach adults who want to memorize (Hifz)?</h3>
+              <span class="shrink-0 transition duration-300 group-open:rotate-45 text-slate-400 group-hover:text-indigo-600 ml-4">
+                <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+              </span>
+            </summary>
+            <p class="mt-4 text-slate-600 text-sm leading-relaxed pr-8 border-t border-slate-100 pt-4">
+              Yes. We use specialized Spaced Repetition Systems (SRS) specifically designed for adult learners. This helps you balance your memorization goals with a busy professional or family schedule.
+            </p>
+          </details>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="Final Call to Action" class="stripe-cta-bg py-16 md:py-20 text-center">
+  <div class="stripe-grid"></div>
+  
+  <div class="w-full max-w-[1200px] mx-auto px-4 relative z-10 flex flex-col items-center">
+    <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl md:rounded-[2rem] p-6 sm:p-10 md:p-12 shadow-2xl max-w-2xl w-full">
+       
+       <h2 class="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight leading-tight">Ready to begin?</h2>
+       <p class="text-base md:text-lg text-slate-300 max-w-lg mx-auto mb-8 leading-relaxed">
+         Join hundreds of families learning the Quran with verified scholars globally.
+       </p>
+       
+       <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center w-full">
+         <a href="/funnels/signup" class="flex items-center justify-center w-full sm:w-auto gap-2 px-8 py-3.5 md:py-4 text-base font-bold rounded-xl transition-all duration-200 text-white bg-gradient-to-r from-pink-500 to-violet-500 shadow-[0_4px_14px_rgba(236,72,153,0.3)] hover:-translate-y-[1px] hover:shadow-[0_6px_20px_rgba(236,72,153,0.4)] hover:brightness-105 border border-white/20 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-pink-400">
+           Claim Your Free Trial
+         </a>
+       </div>
+
+    </div>
+  </div>
+</section>
