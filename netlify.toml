@@ -1,0 +1,21 @@
+# netlify.toml
+# This file tells Netlify how to secure your server.
+
+[[headers]]
+  # Apply these rules to EVERY page on your site
+  for = "/*"
+  [headers.values]
+    # 1. Blocks hackers from putting your site inside a fake hidden frame (Clickjacking)
+    X-Frame-Options = "DENY"
+    
+    # 2. Stops browsers from guessing file types (prevents malicious script execution)
+    X-Content-Type-Options = "nosniff"
+    
+    # 3. Turns on the browser's built-in antivirus (XSS protection)
+    X-XSS-Protection = "1; mode=block"
+    
+    # 4. Forces the browser to ONLY use HTTPS (Secure connection)
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+    
+    # 5. Hides your traffic data when linking to other unsafe sites
+    Referrer-Policy = "strict-origin-when-cross-origin"
