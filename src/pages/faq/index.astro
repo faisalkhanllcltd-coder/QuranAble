@@ -159,23 +159,25 @@ const schema = {
     <div class="max-w-4xl mx-auto w-full">
       
       <div class="flex justify-center mb-10 md:mb-16 w-full">
-        <div class="inline-flex items-center p-1.5 bg-slate-50 border border-gray-200 rounded-[1.5rem] shadow-inner overflow-x-auto max-w-full snap-x" role="tablist" aria-label="FAQ Categories">
-          {faqCategories.map((cat, index) => (
-            <button 
-              type="button" 
-              role="tab" 
-              id={`tab-${cat.id}`}
-              aria-selected={index === 0 ? "true" : "false"} 
-              aria-controls={`panel-${cat.id}`}
-              data-target={cat.id}
-              class="faq-tab-btn flex items-center gap-2.5 px-5 md:px-6 py-3 rounded-[1.25rem] transition-all duration-300 whitespace-nowrap outline-none focus-visible:ring-2 focus-visible:ring-pink-500 flex-shrink-0 snap-start group aria-selected:bg-white aria-selected:text-indigo-950 aria-selected:shadow-sm aria-selected:border aria-selected:border-gray-200 text-slate-500 hover:text-indigo-950 border border-transparent font-bold text-sm md:text-[15px] cursor-pointer"
-            >
-              <div class="w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300 group-aria-selected:bg-pink-500/10 group-aria-selected:text-pink-600 bg-gray-200/50 text-slate-400 group-hover:bg-pink-500/5 group-hover:text-pink-500">
-                <svg aria-hidden="true" class="w-3.5 h-3.5 md:w-4 md:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d={cat.icon} /></svg>
-              </div>
-              {cat.title}
-            </button>
-          ))}
+        <div class="w-full sm:w-auto p-1.5 bg-slate-50 border border-gray-200 rounded-[1.5rem] shadow-inner" role="tablist" aria-label="FAQ Categories">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-1">
+            {faqCategories.map((cat, index) => (
+              <button 
+                type="button" 
+                role="tab" 
+                id={`tab-${cat.id}`}
+                aria-selected={index === 0 ? "true" : "false"} 
+                aria-controls={`panel-${cat.id}`}
+                data-target={cat.id}
+                class="faq-tab-btn flex items-center justify-center sm:justify-start gap-2 px-4 py-2.5 md:px-6 md:py-3 rounded-[1.25rem] transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-pink-500 group aria-selected:bg-white aria-selected:text-indigo-950 aria-selected:shadow-sm aria-selected:border aria-selected:border-gray-200 text-slate-500 hover:text-indigo-950 border border-transparent font-bold text-xs md:text-[15px] cursor-pointer"
+              >
+                <div class="w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-colors duration-300 group-aria-selected:bg-pink-500/10 group-aria-selected:text-pink-600 bg-gray-200/50 text-slate-400 group-hover:bg-pink-500/5 group-hover:text-pink-500">
+                  <svg aria-hidden="true" class="w-3 h-3 md:w-4 md:h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d={cat.icon} /></svg>
+                </div>
+                <span class="truncate">{cat.title}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -195,20 +197,20 @@ const schema = {
             <div class="space-y-3 md:space-y-4 w-full">
               {cat.items.map((item, i) => (
                 <details class="group bg-white border border-gray-200 rounded-[1.25rem] md:rounded-[1.5rem] transition-all duration-300 hover:border-pink-300 hover:shadow-md hover:shadow-pink-500/5 open:bg-slate-50 open:border-gray-200 open:shadow-inner w-full" open={i === 0 ? true : undefined}>
-                  <summary class="focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-pink-500 focus-visible:rounded-[1.25rem] block w-full p-5 md:p-7">
-                    <div class="flex items-start md:items-center justify-between gap-4 w-full">
-                      <h3 class="text-[15px] md:text-lg font-bold text-indigo-950 leading-snug group-open:text-pink-600 transition-colors text-left flex-1">
+                  <summary class="focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-pink-500 focus-visible:rounded-[1.25rem] block w-full p-4 md:p-7">
+                    <div class="flex items-start md:items-center justify-between gap-3 md:gap-4 w-full">
+                      <h3 class="text-[14px] md:text-lg font-bold text-indigo-950 leading-snug group-open:text-pink-600 transition-colors text-left flex-1">
                         {item.q}
                       </h3>
-                      <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white border border-gray-200 group-hover:bg-pink-500/5 flex items-center justify-center flex-shrink-0 text-indigo-950 group-open:bg-pink-500 group-open:text-white group-open:border-pink-500 transition-all duration-500 transform group-open:rotate-180 relative mt-0.5 md:mt-0 shadow-sm">
-                        <svg aria-hidden="true" class="w-4 h-4 md:w-5 md:h-5 absolute transition-opacity duration-300 group-open:opacity-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
-                        <svg aria-hidden="true" class="w-4 h-4 md:w-5 md:h-5 absolute opacity-0 transition-opacity duration-300 group-open:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" /></svg>
+                      <div class="w-7 h-7 md:w-10 md:h-10 rounded-full bg-white border border-gray-200 group-hover:bg-pink-500/5 flex items-center justify-center flex-shrink-0 text-indigo-950 group-open:bg-pink-500 group-open:text-white group-open:border-pink-500 transition-all duration-500 transform group-open:rotate-180 relative mt-0.5 md:mt-0 shadow-sm">
+                        <svg aria-hidden="true" class="w-3.5 h-3.5 md:w-5 md:h-5 absolute transition-opacity duration-300 group-open:opacity-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" /></svg>
+                        <svg aria-hidden="true" class="w-3.5 h-3.5 md:w-5 md:h-5 absolute opacity-0 transition-opacity duration-300 group-open:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20 12H4" /></svg>
                       </div>
                     </div>
                   </summary>
-                  <div class="px-5 md:px-7 pb-6 pt-0 w-full">
-                    <div aria-hidden="true" class="w-full h-px bg-gradient-to-r from-pink-500/20 to-transparent mb-5"></div>
-                    <p class="text-sm md:text-[15px] text-slate-600 leading-relaxed font-medium">
+                  <div class="px-4 md:px-7 pb-5 md:pb-6 pt-0 w-full">
+                    <div aria-hidden="true" class="w-full h-px bg-gradient-to-r from-pink-500/20 to-transparent mb-4 md:mb-5"></div>
+                    <p class="text-[13px] md:text-[15px] text-slate-600 leading-relaxed font-medium">
                       {item.a}
                     </p>
                   </div>
@@ -222,7 +224,7 @@ const schema = {
     </div>
   </main>
 
-  <section aria-label="Final Call to Action" class="stripe-cta-bg py-16 md:py-20 text-center border-t border-gray-800">
+  <section aria-label="Final Call to Action" class="stripe-cta-bg py-16 md:py-20 text-center border-t border-gray-800 w-full overflow-hidden">
   <div class="stripe-grid"></div>
   
   <div class="w-full max-w-[1200px] mx-auto px-4 relative z-10 flex flex-col items-center">

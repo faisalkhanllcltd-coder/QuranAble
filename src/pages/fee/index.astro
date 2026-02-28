@@ -132,17 +132,17 @@ const schema = {
           <div class="w-full max-w-[300px] mb-10">
              <span class="block text-center text-[10px] font-bold text-indigo-900 uppercase tracking-[0.2em] mb-4 opacity-50">Class Duration</span>
              <div class="flex bg-slate-50 p-1.5 rounded-2xl border border-gray-200 shadow-inner">
-                <button id="btn-30" class="dur-btn flex-1 py-3 text-center rounded-xl font-bold text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" aria-pressed="true">30-Min</button>
-                <button id="btn-40" class="dur-btn flex-1 py-3 text-center rounded-xl font-bold text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" aria-pressed="false">40-Min</button>
+                <button id="btn-30" class="dur-btn flex-1 py-2 sm:py-3 text-center rounded-lg sm:rounded-xl font-bold text-[11px] sm:text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" aria-pressed="true">30-Min</button>
+                <button id="btn-40" class="dur-btn flex-1 py-2 sm:py-3 text-center rounded-lg sm:rounded-xl font-bold text-[11px] sm:text-xs focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500" aria-pressed="false">40-Min</button>
              </div>
           </div>
 
           <div class="w-full">
             <span class="block text-center text-[10px] font-bold text-indigo-900 uppercase tracking-[0.2em] mb-4 opacity-50">Select Currency</span>
-            <div class="flex flex-wrap justify-center gap-2.5">
+            <div class="flex flex-wrap justify-center gap-2 md:gap-2.5">
               {['GBP', 'USD', 'EUR', 'AED'].map((cur) => (
                 <button 
-                  class="cur-btn px-5 md:px-8 py-2.5 rounded-xl font-bold text-xs bg-white border border-gray-200 text-slate-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500" 
+                  class="cur-btn px-3 sm:px-5 md:px-8 py-2 md:py-2.5 rounded-lg md:rounded-xl font-bold text-[10px] sm:text-xs bg-white border border-gray-200 text-slate-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500" 
                   data-currency={cur} 
                   aria-pressed={cur === 'GBP' ? 'true' : 'false'}
                 >
@@ -153,14 +153,14 @@ const schema = {
           </div>
         </div>
 
-        <div class="w-full overflow-x-auto" aria-live="polite">
-          <table class="w-full border-collapse min-w-[420px] table-fixed">
+        <div class="w-full overflow-x-hidden" aria-live="polite">
+          <table class="w-full border-collapse table-fixed">
             <caption class="sr-only">Monthly tuition fees based on class frequency and selected currency.</caption>
             <thead>
               <tr class="bg-slate-50 border-b border-gray-200">
-                <th class="w-1/3 py-5 px-4 font-bold text-indigo-950 text-[10px] uppercase tracking-widest text-center">Week</th>
-                <th class="w-1/3 py-5 px-4 font-bold text-indigo-950 text-[10px] uppercase tracking-widest text-center">Month</th>
-                <th class="w-1/3 py-5 px-4 font-bold text-indigo-950 text-[10px] uppercase tracking-widest text-center">Flat Fee</th>
+                <th class="w-1/3 py-3 sm:py-5 px-1 sm:px-4 font-bold text-indigo-950 text-[9px] sm:text-[10px] uppercase tracking-widest text-center">Week</th>
+                <th class="w-1/3 py-3 sm:py-5 px-1 sm:px-4 font-bold text-indigo-950 text-[9px] sm:text-[10px] uppercase tracking-widest text-center">Month</th>
+                <th class="w-1/3 py-3 sm:py-5 px-1 sm:px-4 font-bold text-indigo-950 text-[9px] sm:text-[10px] uppercase tracking-widest text-center">Flat Fee</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-gray-100">
@@ -170,22 +170,22 @@ const schema = {
                 { qty: 4, total: 16, id: 'price-2' },
               ].map((row) => (
                 <tr class="hover:bg-slate-50/50 transition-colors">
-                  <td class="py-6 px-2 flex items-center justify-center gap-3">
-                    <div class="w-9 h-9 rounded-xl bg-slate-50 border border-gray-200 flex items-center justify-center font-bold text-indigo-950 text-sm">{row.qty}</div>
-                    <span class="font-semibold text-slate-700 text-[13px] sm:text-base">Classes</span>
+                  <td class="py-4 sm:py-6 px-1 sm:px-2 flex items-center justify-center gap-1.5 sm:gap-3">
+                    <div class="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-slate-50 border border-gray-200 flex items-center justify-center font-bold text-indigo-950 text-xs sm:text-sm">{row.qty}</div>
+                    <span class="font-semibold text-slate-700 text-[11px] sm:text-[13px] md:text-base">Classes</span>
                   </td>
-                  <td class="py-6 px-2 text-center font-medium text-slate-600 text-[13px] sm:text-base">{row.total} Total</td>
-                  <td id={row.id} class="py-6 px-2 text-center font-extrabold text-xl md:text-3xl text-indigo-950 transition-all duration-300">...</td>
+                  <td class="py-4 sm:py-6 px-1 sm:px-2 text-center font-medium text-slate-600 text-[11px] sm:text-[13px] md:text-base">{row.total} Total</td>
+                  <td id={row.id} class="py-4 sm:py-6 px-1 sm:px-2 text-center font-extrabold text-lg sm:text-xl md:text-3xl text-indigo-950 transition-all duration-300">...</td>
                 </tr>
               ))}
               
               <tr class="bg-pink-500/5 border-l-4 border-pink-500">
-                <td class="py-7 px-2 flex items-center justify-center gap-3">
-                  <div class="w-9 h-9 rounded-xl bg-pink-500 text-white shadow-lg flex items-center justify-center font-bold text-sm">5</div>
-                  <span class="font-bold text-indigo-950 text-[13px] sm:text-base">Classes</span>
+                <td class="py-5 sm:py-7 px-1 sm:px-2 flex items-center justify-center gap-1.5 sm:gap-3">
+                  <div class="w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-pink-500 text-white shadow-lg flex items-center justify-center font-bold text-xs sm:text-sm">5</div>
+                  <span class="font-bold text-indigo-950 text-[11px] sm:text-[13px] md:text-base">Classes</span>
                 </td>
-                <td class="py-7 px-2 text-center font-bold text-indigo-950 text-[13px] sm:text-base">20 Total</td>
-                <td id="price-3" class="py-7 px-2 text-center font-extrabold text-2xl md:text-4xl text-pink-500 transition-all duration-300">...</td>
+                <td class="py-5 sm:py-7 px-1 sm:px-2 text-center font-bold text-indigo-950 text-[11px] sm:text-[13px] md:text-base">20 Total</td>
+                <td id="price-3" class="py-5 sm:py-7 px-1 sm:px-2 text-center font-extrabold text-xl sm:text-2xl md:text-4xl text-pink-500 transition-all duration-300">...</td>
               </tr>
             </tbody>
           </table>
@@ -244,7 +244,7 @@ const schema = {
     </div>
   </section>
 
-  <section aria-label="Final Call to Action" class="stripe-cta-bg py-16 md:py-20 text-center">
+  <section aria-label="Final Call to Action" class="stripe-cta-bg py-16 md:py-20 text-center w-full overflow-hidden">
     <div class="stripe-grid"></div>
     
     <div class="w-full max-w-[1200px] mx-auto px-4 relative z-10 flex flex-col items-center">

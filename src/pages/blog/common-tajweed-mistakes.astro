@@ -88,154 +88,168 @@ const articleSchema = {
     }
   </style>
 
-  <div id="read-progress" class="reading-bar"></div>
+  <div class="w-full max-w-full overflow-x-clip flex flex-col box-border">
 
-  <header class="relative bg-slate-50 pt-32 md:pt-40 pb-20 md:pb-28 px-6 border-b border-gray-200 overflow-hidden">
-    <div class="w-full max-w-[1400px] mx-auto absolute inset-0 flex justify-center pointer-events-none">
-      <div class="vercel-grid"></div>
-    </div>
-    
-    <div aria-hidden="true" class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-rose-600/5 rounded-full blur-[100px] pointer-events-none"></div>
+    <div id="read-progress" class="reading-bar"></div>
 
-    <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 items-center relative z-10">
-      
-      <div class="flex-1 lg:pr-8 text-center lg:text-left">
-         
-         <a href="/blog" class="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full border border-gray-200 shadow-sm text-rose-600 hover:bg-rose-50 transition-colors mb-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-300">
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
-            <span class="text-[10px] font-black uppercase tracking-[0.15em] text-slate-900">Back to Articles</span>
-         </a>
-
-         <h1 class="text-[clamp(2.5rem,5vw,4.5rem)] font-black text-slate-900 tracking-tight leading-[1.05] mb-6">
-           The Anatomy of Precision: <br class="hidden md:block" />
-           <span class="text-rose-600">5 Tajweed Mistakes.</span>
-         </h1>
-         
-         <p class="text-lg md:text-xl text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-10">
-           A scientific exploration of the most frequent phonetic errors non-native speakers make, and the neurological path to a flawless recitation.
-         </p>
-
-         <div class="flex items-center justify-center lg:justify-start gap-4">
-            <span class="text-sm font-bold text-slate-900">8 Min Read</span>
-            <span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
-            <span class="text-sm font-bold text-slate-500">Feb 14, 2026</span>
-         </div>
+    <header class="relative bg-slate-50 pt-32 md:pt-40 pb-20 md:pb-28 px-4 md:px-6 border-b border-gray-200 overflow-hidden">
+      <div class="w-full max-w-[1400px] mx-auto absolute inset-0 flex justify-center pointer-events-none">
+        <div class="vercel-grid"></div>
       </div>
-
-      <div class="w-full lg:w-[45%] flex-shrink-0 flex justify-center lg:justify-end">
-        <div class="bg-rose-50 rounded-[3rem] md:rounded-[4rem] aspect-[4/3] w-full max-w-[500px] relative flex items-center justify-center border border-rose-100 shadow-inner overflow-hidden">
-            <div aria-hidden="true" class="absolute top-[-20%] right-[-20%] w-[120%] h-[120%] bg-white rounded-full blur-[80px] opacity-60"></div>
-            <div class="w-40 h-40 md:w-56 md:h-56 bg-white rounded-[2rem] md:rounded-[3rem] shadow-[0_30px_60px_-15px_rgba(225,29,72,0.2)] flex items-center justify-center border border-white relative z-10 animate-float">
-                <svg class="w-20 h-20 md:w-28 md:h-28 text-rose-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z M8.25 9v1.5m7.5-1.5v1.5" />
-                </svg>
-            </div>
-        </div>
-      </div>
-
-    </div>
-  </header>
-
-  <main class="py-16 md:py-24 px-6 bg-white relative">
-    <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-20 items-start">
       
-      <article class="flex-1 min-w-0 edge-prose w-full max-w-3xl mx-auto lg:mx-0">
+      <div aria-hidden="true" class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-rose-600/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+      <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-center relative z-10">
         
-        <p class="text-xl md:text-2xl font-bold text-slate-900 mb-12 leading-[1.6] tracking-tight">
-          The Arabic of the Quran is a marvel of acoustic engineering. A single degree of tongue displacement transforms a word from Divine Truth to a linguistic error. Let's fix the fundamentals.
-        </p>
+        <div class="flex-1 lg:pr-8 text-center lg:text-left w-full">
+           
+           <a href="/blog" class="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full border border-gray-200 shadow-sm text-rose-600 hover:bg-rose-50 transition-colors mb-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-300">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+              <span class="text-[10px] font-black uppercase tracking-[0.15em] text-slate-900">Back to Articles</span>
+           </a>
 
-        <section id="s1" class="scroll-mt-32 border-t border-slate-100 pt-10">
-          <h2>I. The "H" Paradox: Ha (هـ) vs. Haa (ح)</h2>
-          <p>For non-native speakers, particularly from English, Urdu, or Bengali backgrounds, the distinction between the soft <strong>Ha (<span lang="ar" dir="rtl">هـ</span>)</strong> and the deep, friction-based <strong>Haa (<span lang="ar" dir="rtl">ح</span>)</strong> is the most persistent hurdle.</p>
-          <p>The former originates from the bottom of the throat (<em>Aqsa al-Halq</em>), similar to the 'h' in the English word "home." The latter requires precise constriction in the middle of the throat (<em>Wasat al-Halq</em>).</p>
-          <p>Why is this critical? Consider the word <em>"Al-Hamd"</em> (All Praise). If pronounced with a soft 'Ha', the word loses its specific Quranic gravity and can inadvertently change the meaning. Excellence in Tajweed requires the development of <strong>Muscular Awareness</strong>—training the epiglottis to respond to airflow with calibrated friction. Live feedback from a certified tutor is the only reliable way to ensure your throat is vibrating at the correct frequency.</p>
-        </section>
+           <h1 class="text-[clamp(1.75rem,5vw,4.5rem)] font-black text-slate-900 tracking-tight leading-[1.05] mb-6">
+              The Anatomy of Precision: <br class="hidden md:block" />
+              <span class="text-rose-600">5 Tajweed Mistakes.</span>
+           </h1>
+           
+           <p class="text-lg md:text-xl text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-10">
+              A scientific exploration of the most frequent phonetic errors non-native speakers make, and the neurological path to a flawless recitation.
+           </p>
 
-        <div class="not-prose my-16 bg-rose-50/50 border border-rose-100 rounded-3xl p-8 md:p-10 relative overflow-hidden shadow-sm">
-          <div class="absolute top-0 left-0 w-2 h-full bg-rose-600"></div>
-          <div class="flex items-start gap-5">
-            <div class="w-12 h-12 bg-white rounded-2xl shadow-sm border border-rose-100 flex items-center justify-center shrink-0 text-rose-600">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-            </div>
-            <div>
-              <h3 class="text-xl font-black text-slate-900 mb-3 tracking-tight">Lahn Jali vs. Lahn Khafi</h3>
-              <p class="text-slate-600 leading-relaxed font-medium">
-                In Tajweed science, mistakes are categorized. <strong>Lahn Jali</strong> (Obvious Mistakes) alter letters or vowels, changing meanings, and are prohibited. <strong>Lahn Khafi</strong> (Hidden Mistakes) involve missing rules like elongation or nasality, robbing the Quran of its beauty. Perfection requires the elimination of both.
-              </p>
-            </div>
+           <div class="flex items-center justify-center lg:justify-start gap-4">
+              <span class="text-sm font-bold text-slate-900">8 Min Read</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+              <span class="text-sm font-bold text-slate-500">Feb 14, 2026</span>
+           </div>
+        </div>
+
+        <div class="w-full lg:w-[45%] flex-shrink-0 flex justify-center lg:justify-end mt-8 lg:mt-0">
+          <div class="bg-rose-50 rounded-[2.5rem] md:rounded-[4rem] aspect-[4/3] w-full max-w-[500px] relative flex items-center justify-center border border-rose-100 shadow-inner overflow-hidden">
+              <div aria-hidden="true" class="absolute top-[-20%] right-[-20%] w-[120%] h-[120%] bg-white rounded-full blur-[60px] md:blur-[80px] opacity-60"></div>
+              <div class="w-32 h-32 md:w-56 md:h-56 bg-white rounded-[2rem] md:rounded-[3rem] shadow-[0_30px_60px_-15px_rgba(225,29,72,0.2)] flex items-center justify-center border border-white relative z-10 animate-float">
+                  <svg class="w-16 h-16 md:w-28 md:h-28 text-rose-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z M8.25 9v1.5m7.5-1.5v1.5" />
+                  </svg>
+              </div>
           </div>
         </div>
 
-        <section id="s2" class="scroll-mt-32 border-t border-slate-100 pt-10">
-          <h2>II. Temporal Theft: Missed Madd (Duration)</h2>
-          <p>Tajweed is as much about <strong>timing</strong> as it is about phonics. The <em>Madd</em> (extensions) are not stylistic flourishes; they are strict mathematical constants. A 2-beat Madd must be exactly twice the length of a single vowel.</p>
-          <p>Rushing through these extensions is a common error. At QuranAble, we implement the <strong>Metronome Methodology</strong>. We teach students to use their fingers to physically count the beats (<em>Harakaat</em>). This transforms an abstract timing rule into a tactile, physical habit. Without this discipline, the rhythmic flow of the Surah—which is specifically designed to move the human heart—is fractured.</p>
-        </section>
+      </div>
+    </header>
 
-        <section id="s3" class="scroll-mt-32 border-t border-slate-100 pt-10">
-          <h2>III. The Heavy Letters (Istila'a)</h2>
-          <p>Arabic contains "Heavy" letters—specifically <strong>Saad, Daad, Taa, and Zaa</strong>. These require the back of the tongue to rise to the roof of the mouth, filling the mouth with an echo.</p>
-          <p>Non-native speakers often succumb to "Lazy Tongue," using a flat, English-style articulation. This error transforms a heavy <em>Saad</em> (<span lang="ar" dir="rtl">ص</span>) into a thin <em>Seen</em> (<span lang="ar" dir="rtl">س</span>), fundamentally altering the identity of the Word. Mastering these requires deep practice in mouth-shaping (<em>Tafkheem</em>).</p>
-        </section>
+    <main class="py-16 md:py-24 px-4 md:px-6 bg-white relative">
+      <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
+        
+        <article class="flex-1 min-w-0 edge-prose w-full max-w-3xl mx-auto lg:mx-0 break-words">
+          
+          <p class="text-xl md:text-2xl font-bold text-slate-900 mb-12 leading-[1.6] tracking-tight">
+            The Arabic of the Quran is a marvel of acoustic engineering. A single degree of tongue displacement transforms a word from Divine Truth to a linguistic error. Let's fix the fundamentals.
+          </p>
 
-        <section id="s4" class="scroll-mt-32 border-t border-slate-100 pt-10 pb-10">
-          <h2>IV. Conclusion: Rewiring the Brain</h2>
-          <p>Correcting Tajweed mistakes is not just a matter of "trying harder"; it is a matter of <strong>neurological rewiring</strong>. As adults or non-native speakers, we are programmed to use specific muscles for our native speech.</p>
-          <p>Mastering the Quran requires activating entirely new, dormant muscles in the throat and mouth. This physical transformation is only possible through consistent, expert correction that intercepts bad habits before they cement into permanent muscle memory.</p>
-        </section>
+          <section id="s1" class="scroll-mt-32 border-t border-slate-100 pt-10">
+            <h2>I. The "H" Paradox: Ha (هـ) vs. Haa (ح)</h2>
+            <p>For non-native speakers, particularly from English, Urdu, or Bengali backgrounds, the distinction between the soft <strong>Ha (<span lang="ar" dir="rtl">هـ</span>)</strong> and the deep, friction-based <strong>Haa (<span lang="ar" dir="rtl">ح</span>)</strong> is the most persistent hurdle.</p>
+            <p>The former originates from the bottom of the throat (<em>Aqsa al-Halq</em>), similar to the 'h' in the English word "home." The latter requires precise constriction in the middle of the throat (<em>Wasat al-Halq</em>).</p>
+            <p>Why is this critical? Consider the word <em>"Al-Hamd"</em> (All Praise). If pronounced with a soft 'Ha', the word loses its specific Quranic gravity and can inadvertently change the meaning. Excellence in Tajweed requires the development of <strong>Muscular Awareness</strong>—training the epiglottis to respond to airflow with calibrated friction. Live feedback from a certified tutor is the only reliable way to ensure your throat is vibrating at the correct frequency.</p>
+          </section>
 
-      </article>
-
-      <aside class="w-full lg:w-[320px] lg:sticky lg:top-32 shrink-0">
-        <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 shadow-sm">
-            <h4 class="text-[10px] font-black text-rose-600 uppercase tracking-[0.2em] border-b border-slate-200 pb-4 mb-6">Article Contents</h4>
-            
-            <nav class="flex flex-col gap-4">
-                <a href="#s1" class="text-sm font-bold text-slate-600 hover:text-rose-600 transition-colors">I. The "H" Paradox</a>
-                <a href="#s2" class="text-sm font-bold text-slate-600 hover:text-rose-600 transition-colors">II. Missed Madd (Timing)</a>
-                <a href="#s3" class="text-sm font-bold text-slate-600 hover:text-rose-600 transition-colors">III. Heavy Letters (Istila'a)</a>
-                <a href="#s4" class="text-sm font-bold text-slate-600 hover:text-rose-600 transition-colors">IV. Brain Rewiring</a>
-            </nav>
-            
-            <div class="mt-8 pt-6 border-t border-slate-200 flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center font-black text-sm shadow-md">QA</div>
-                <div>
-                    <p class="text-sm font-bold text-slate-900 leading-tight">Academic Review</p>
-                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-0.5">QuranAble Board</p>
-                </div>
+          <div class="not-prose my-16 bg-rose-50/50 border border-rose-100 rounded-3xl p-6 md:p-10 relative overflow-hidden shadow-sm">
+            <div class="absolute top-0 left-0 w-2 h-full bg-rose-600"></div>
+            <div class="flex items-start gap-4 md:gap-5">
+              <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-2xl shadow-sm border border-rose-100 flex items-center justify-center shrink-0 text-rose-600">
+                <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </div>
+              <div>
+                <h3 class="text-lg md:text-xl font-black text-slate-900 mb-3 tracking-tight">Lahn Jali vs. Lahn Khafi</h3>
+                <p class="text-slate-600 leading-relaxed font-medium text-base md:text-lg">
+                  In Tajweed science, mistakes are categorized. <strong>Lahn Jali</strong> (Obvious Mistakes) alter letters or vowels, changing meanings, and are prohibited. <strong>Lahn Khafi</strong> (Hidden Mistakes) involve missing rules like elongation or nasality, robbing the Quran of its beauty. Perfection requires the elimination of both.
+                </p>
+              </div>
             </div>
+          </div>
 
-            <div class="mt-8">
-                <a href="/funnels/signup" class="flex items-center justify-center w-full py-3.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl font-bold text-sm shadow-md hover:-translate-y-0.5 transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-rose-300">
-                  Book Free Audit
-                </a>
-            </div>
-        </div>
-      </aside>
+          <section id="s2" class="scroll-mt-32 border-t border-slate-100 pt-10">
+            <h2>II. Temporal Theft: Missed Madd (Duration)</h2>
+            <p>Tajweed is as much about <strong>timing</strong> as it is about phonics. The <em>Madd</em> (extensions) are not stylistic flourishes; they are strict mathematical constants. A 2-beat Madd must be exactly twice the length of a single vowel.</p>
+            <p>Rushing through these extensions is a common error. At QuranAble, we implement the <strong>Metronome Methodology</strong>. We teach students to use their fingers to physically count the beats (<em>Harakaat</em>). This transforms an abstract timing rule into a tactile, physical habit. Without this discipline, the rhythmic flow of the Surah—which is specifically designed to move the human heart—is fractured.</p>
+          </section>
 
-    </div>
-  </main>
+          <section id="s3" class="scroll-mt-32 border-t border-slate-100 pt-10">
+            <h2>III. The Heavy Letters (Istila'a)</h2>
+            <p>Arabic contains "Heavy" letters—specifically <strong>Saad, Daad, Taa, and Zaa</strong>. These require the back of the tongue to rise to the roof of the mouth, filling the mouth with an echo.</p>
+            <p>Non-native speakers often succumb to "Lazy Tongue," using a flat, English-style articulation. This error transforms a heavy <em>Saad</em> (<span lang="ar" dir="rtl">ص</span>) into a thin <em>Seen</em> (<span lang="ar" dir="rtl">س</span>), fundamentally altering the identity of the Word. Mastering these requires deep practice in mouth-shaping (<em>Tafkheem</em>).</p>
+          </section>
 
-  <section class="bg-slate-50 py-24 md:py-32 px-6 border-t border-slate-200 text-center">
-    <div class="max-w-3xl mx-auto flex flex-col items-center">
-        <div class="w-16 h-16 bg-white border border-slate-200 shadow-sm rounded-2xl flex items-center justify-center text-rose-600 mb-8">
-            <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-        </div>
-        <h2 class="text-[clamp(2rem,4vw,3.5rem)] font-black text-slate-900 tracking-tight leading-[1.1] mb-6">
-            Achieve Ihsan in your recitation.
-        </h2>
-        <p class="text-lg md:text-xl text-slate-600 font-medium leading-relaxed mb-10 max-w-2xl">
-            Don't let bad habits cement into muscle memory. Secure your recitation with a 100% free professional Tajweed audit today.
-        </p>
-        <a href="/funnels/signup" class="inline-flex items-center justify-center gap-2 px-10 py-5 bg-rose-600 text-white text-lg font-black rounded-2xl shadow-[0_15px_30px_-10px_rgba(225,29,72,0.4)] hover:bg-rose-700 hover:-translate-y-1 transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-rose-300">
-            Claim Your Free Audit
-            <svg aria-hidden="true" class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-        </a>
-    </div>
-  </section>
+          <section id="s4" class="scroll-mt-32 border-t border-slate-100 pt-10 pb-10">
+            <h2>IV. Conclusion: Rewiring the Brain</h2>
+            <p>Correcting Tajweed mistakes is not just a matter of "trying harder"; it is a matter of <strong>neurological rewiring</strong>. As adults or non-native speakers, we are programmed to use specific muscles for our native speech.</p>
+            <p>Mastering the Quran requires activating entirely new, dormant muscles in the throat and mouth. This physical transformation is only possible through consistent, expert correction that intercepts bad habits before they cement into permanent muscle memory.</p>
+          </section>
 
-  <script>
+        </article>
+
+        <aside class="w-full lg:w-[320px] lg:sticky lg:top-32 shrink-0 hidden lg:block">
+          <div class="bg-slate-50 rounded-3xl p-8 border border-slate-200 shadow-sm">
+              <h4 class="text-[10px] font-black text-rose-600 uppercase tracking-[0.2em] border-b border-slate-200 pb-4 mb-6">Article Contents</h4>
+              
+              <nav class="flex flex-col gap-4">
+                  <a href="#s1" class="text-sm font-bold text-slate-600 hover:text-rose-600 transition-colors">I. The "H" Paradox</a>
+                  <a href="#s2" class="text-sm font-bold text-slate-600 hover:text-rose-600 transition-colors">II. Missed Madd (Timing)</a>
+                  <a href="#s3" class="text-sm font-bold text-slate-600 hover:text-rose-600 transition-colors">III. Heavy Letters (Istila'a)</a>
+                  <a href="#s4" class="text-sm font-bold text-slate-600 hover:text-rose-600 transition-colors">IV. Brain Rewiring</a>
+              </nav>
+              
+              <div class="mt-8 pt-6 border-t border-slate-200 flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center font-black text-sm shadow-md">QA</div>
+                  <div>
+                      <p class="text-sm font-bold text-slate-900 leading-tight">Academic Review</p>
+                      <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-0.5">QuranAble Board</p>
+                  </div>
+              </div>
+
+              <div class="mt-8">
+                  <a href="/funnels/signup" class="flex items-center justify-center w-full py-3.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl font-bold text-sm shadow-md hover:-translate-y-0.5 transition-all focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-rose-300">
+                    Book Free Audit
+                  </a>
+              </div>
+          </div>
+        </aside>
+
+        <aside class="w-full lg:hidden shrink-0 mt-8">
+           <div class="bg-slate-50 rounded-3xl p-6 border border-slate-200 shadow-sm">
+             <h4 class="text-[10px] font-black text-rose-600 uppercase tracking-[0.2em] border-b border-slate-200 pb-4 mb-6">In This Article</h4>
+             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                 <a href="#s1" class="text-sm font-bold text-slate-600">I. The "H" Paradox</a>
+                 <a href="#s2" class="text-sm font-bold text-slate-600">II. Missed Madd</a>
+                 <a href="#s3" class="text-sm font-bold text-slate-600">III. Heavy Letters</a>
+                 <a href="#s4" class="text-sm font-bold text-slate-600">IV. Brain Rewiring</a>
+             </div>
+           </div>
+        </aside>
+
+      </div>
+    </main>
+
+    <section class="bg-slate-50 py-24 md:py-32 px-4 md:px-6 border-t border-slate-200 text-center">
+      <div class="max-w-3xl mx-auto flex flex-col items-center">
+          <div class="w-16 h-16 bg-white border border-slate-200 shadow-sm rounded-2xl flex items-center justify-center text-rose-600 mb-8">
+              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          </div>
+          <h2 class="text-[clamp(1.75rem,4vw,3.5rem)] font-black text-slate-900 tracking-tight leading-[1.1] mb-6">
+              Achieve Ihsan in your recitation.
+          </h2>
+          <p class="text-lg md:text-xl text-slate-600 font-medium leading-relaxed mb-10 max-w-2xl">
+              Don't let bad habits cement into muscle memory. Secure your recitation with a 100% free professional Tajweed audit today.
+          </p>
+          <a href="/funnels/signup" class="inline-flex w-full md:w-auto items-center justify-center gap-2 px-6 py-4 md:px-10 md:py-5 bg-rose-600 text-white text-lg font-black rounded-2xl shadow-[0_15px_30px_-10px_rgba(225,29,72,0.4)] hover:bg-rose-700 hover:-translate-y-1 transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-rose-300">
+              Claim Your Free Audit
+              <svg aria-hidden="true" class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+          </a>
+      </div>
+    </section>
+
+  </div><script>
     window.addEventListener('scroll', () => {
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;

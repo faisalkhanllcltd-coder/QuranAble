@@ -19,8 +19,8 @@ const contactMethods = [
   { 
     title: "Email Outreach", 
     desc: "For general inquiries and partnership proposals.", 
-    value: "quraanable@gmail.com", 
-    link: "mailto:quraanable@gmail.com",
+    value: "contact@quranable.com", 
+    link: "mailto:contact@quranable.com",
     icon: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
     badge: null,
     status: "reply < 2hrs"
@@ -110,7 +110,7 @@ const schema = {
         <span class="text-[10px] font-black uppercase tracking-widest text-indigo-950">Support Online Now</span>
       </div>
 
-      <h1 class="text-[clamp(2.2rem,5vw,4rem)] font-black text-indigo-950 tracking-tight mb-6 leading-[1.05]">
+      <h1 class="text-[clamp(1.8rem,5vw,4rem)] font-black text-indigo-950 tracking-tight mb-6 leading-[1.05]">
         Let's start a <br class="hidden md:block" />
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-violet-500">conversation.</span>
       </h1>
@@ -126,32 +126,32 @@ const schema = {
       
       <div class="lg:col-span-5 space-y-12">
         <div class="space-y-4">
-          <h2 class="text-[clamp(1.75rem,4vw,2.75rem)] font-black text-indigo-950 tracking-tight leading-[1.15]">Direct Access.</h2>
-          <p class="text-lg text-slate-600 leading-relaxed font-medium">Select the method that works best for you. We optimize our response times to serve students globally.</p>
+          <h2 class="text-[clamp(1.5rem,4vw,2.75rem)] font-black text-indigo-950 tracking-tight leading-[1.15]">Direct Access.</h2>
+          <p class="text-base md:text-lg text-slate-600 leading-relaxed font-medium">Select the method that works best for you. We optimize our response times to serve students globally.</p>
         </div>
 
-        <div class="space-y-5">
+        <div class="space-y-4 md:space-y-5">
           {contactMethods.map(method => (
             <a href={method.link} class="block group focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-pink-500 rounded-[1.5rem]">
-              <div class="bg-slate-50 p-6 md:p-8 rounded-[1.5rem] border border-gray-200 relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-pink-500/5 hover:-translate-y-1 hover:bg-white hover:border-pink-200">
+              <div class="bg-slate-50 p-4 md:p-8 rounded-[1.5rem] border border-gray-200 relative overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-pink-500/5 hover:-translate-y-1 hover:bg-white hover:border-pink-200">
                 {method.badge && (
-                  <div class="absolute top-6 right-6 bg-pink-500/10 text-pink-600 text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full">
+                  <div class="absolute top-3 right-3 md:top-6 md:right-6 bg-pink-500/10 text-pink-600 text-[8px] md:text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full z-10">
                     {method.badge}
                   </div>
                 )}
-                <div class="flex items-start gap-5">
-                  <div class="w-14 h-14 rounded-2xl bg-white border border-gray-200 shadow-sm flex-none flex items-center justify-center text-indigo-950 group-hover:bg-gradient-to-br group-hover:from-pink-500 group-hover:to-violet-500 group-hover:text-white group-hover:border-transparent transition-all duration-300">
-                    <svg aria-hidden="true" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d={method.icon} /></svg>
+                <div class="flex items-start gap-3 md:gap-5">
+                  <div class="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-white border border-gray-200 shadow-sm flex-none flex items-center justify-center text-indigo-950 group-hover:bg-gradient-to-br group-hover:from-pink-500 group-hover:to-violet-500 group-hover:text-white group-hover:border-transparent transition-all duration-300">
+                    <svg aria-hidden="true" class="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d={method.icon} /></svg>
                   </div>
-                  <div class="pt-1">
-                    <h3 class="text-xl font-black text-indigo-950 mb-1 group-hover:text-pink-600 transition-colors">{method.title}</h3>
-                    <p class="text-slate-600 text-sm font-medium leading-relaxed mb-4 pr-8">{method.desc}</p>
-                    <div class="flex items-center gap-3">
-                      <span class="inline-flex items-center gap-2 text-sm font-bold text-indigo-950">
+                  <div class="pt-0 md:pt-1 w-full min-w-0">
+                    <h3 class="text-base md:text-xl font-black text-indigo-950 mb-1 group-hover:text-pink-600 transition-colors pr-14 md:pr-0">{method.title}</h3>
+                    <p class="text-slate-600 text-[11px] md:text-sm font-medium leading-relaxed mb-2 md:mb-4 pr-2 md:pr-8">{method.desc}</p>
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-1.5 md:gap-3">
+                      <span class="inline-flex items-center gap-1.5 md:gap-2 text-[11px] md:text-sm font-bold text-indigo-950 break-all sm:break-words">
                         {method.value}
-                        <svg aria-hidden="true" class="w-4 h-4 text-pink-500 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                        <svg aria-hidden="true" class="w-3.5 h-3.5 md:w-4 md:h-4 text-pink-500 flex-none group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                       </span>
-                      <span class="text-[9px] uppercase tracking-widest font-bold text-slate-500 bg-gray-200/50 px-2 py-0.5 rounded-md">
+                      <span class="inline-block w-max text-[8px] md:text-[9px] uppercase tracking-widest font-bold text-slate-500 bg-gray-200/50 px-2 py-0.5 rounded-md flex-none">
                         {method.status}
                       </span>
                     </div>
@@ -230,7 +230,7 @@ const schema = {
         </p>
       </div>
       
-      <ul class="md:w-1/2 grid grid-cols-2 gap-4 w-full p-0 m-0 list-none">
+      <ul class="md:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4 w-full p-0 m-0 list-none">
         {['EST (New York)', 'GMT (London)', 'AST (Dubai)', 'AEST (Sydney)'].map(tz => (
           <li class="bg-white p-5 rounded-2xl border border-gray-200 shadow-sm flex flex-col gap-2 hover:-translate-y-1 hover:shadow-md transition-all cursor-default">
              <div class="flex items-center justify-between">

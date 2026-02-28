@@ -92,139 +92,151 @@ const articleSchema = {
     }
   </style>
 
-  <div id="read-progress" class="reading-bar"></div>
+  <div class="w-full max-w-full overflow-x-clip flex flex-col box-border">
 
-  <header class="relative bg-slate-50 pt-32 md:pt-40 pb-20 md:pb-28 px-6 border-b border-gray-200 overflow-hidden">
-    <div class="w-full max-w-[1400px] mx-auto absolute inset-0 flex justify-center pointer-events-none">
-      <div class="vercel-grid"></div>
-    </div>
-    
-    <div aria-hidden="true" class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] rounded-full blur-[100px] pointer-events-none" style="background-color: oklch(from var(--color-cyan-500) l c h / 0.08)"></div>
+    <div id="read-progress" class="reading-bar"></div>
 
-    <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 items-center relative z-10">
-      
-      <div class="flex-1 lg:pr-8 text-center lg:text-left">
-         
-         <a href="/blog" class="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full border border-gray-200 shadow-sm transition-colors mb-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300" style="color: var(--color-cyan-600)" onmouseover="this.style.backgroundColor='var(--color-blue-50)'" onmouseout="this.style.backgroundColor='white'">
-            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
-            <span class="text-[10px] font-black uppercase tracking-[0.15em] text-slate-900">Back to Articles</span>
-         </a>
-
-         <h1 class="text-[clamp(2.5rem,5vw,4.5rem)] font-black text-slate-900 tracking-tight leading-[1.05] mb-6">
-           The Hifz <br class="hidden md:block" />
-           <span style="color: var(--color-cyan-600)">Algorithm.</span>
-         </h1>
-         
-         <p class="text-lg md:text-xl text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-10">
-           Leveraging cognitive science and Spaced Repetition to master the Quran with 300% higher retention rates.
-         </p>
-
-         <div class="flex items-center justify-center lg:justify-start gap-4">
-            <span class="text-sm font-bold text-slate-900">8 Min Read</span>
-            <span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
-            <span class="text-sm font-bold text-slate-500">Feb 10, 2026</span>
-         </div>
+    <header class="relative bg-slate-50 pt-32 md:pt-40 pb-20 md:pb-28 px-4 md:px-6 border-b border-gray-200 overflow-hidden">
+      <div class="w-full max-w-[1400px] mx-auto absolute inset-0 flex justify-center pointer-events-none">
+        <div class="vercel-grid"></div>
       </div>
-
-      <div class="w-full lg:w-[45%] flex-shrink-0 flex justify-center lg:justify-end">
-        <div class="rounded-[3rem] md:rounded-[4rem] aspect-[4/3] w-full max-w-[500px] relative flex items-center justify-center border shadow-inner overflow-hidden" style="background-color: var(--color-blue-50); border-color: var(--color-blue-100)">
-            <div aria-hidden="true" class="absolute top-[-20%] right-[-20%] w-[120%] h-[120%] bg-white rounded-full blur-[80px] opacity-60"></div>
-            <div class="w-40 h-40 md:w-56 md:h-56 bg-white rounded-[2rem] md:rounded-[3rem] flex items-center justify-center border border-white relative z-10 animate-float" style="box-shadow: 0 30px 60px -15px oklch(from var(--color-cyan-600) l c h / 0.2)">
-                <svg class="w-20 h-20 md:w-28 md:h-28" style="color: var(--color-cyan-500)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-            </div>
-        </div>
-      </div>
-
-    </div>
-  </header>
-
-  <main class="py-16 md:py-24 px-6 bg-white relative">
-    <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-16 lg:gap-20 items-start">
       
-      <article class="flex-1 min-w-0 edge-prose w-full max-w-3xl mx-auto lg:mx-0">
+      <div aria-hidden="true" class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] rounded-full blur-[100px] pointer-events-none" style="background-color: oklch(from var(--color-cyan-500) l c h / 0.08)"></div>
+
+      <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16 items-center relative z-10">
         
-        <p class="text-xl md:text-2xl font-bold text-slate-900 mb-12 leading-[1.6] tracking-tight">
-          Traditional Hifz relies purely on willpower. Modern Hifz is built on <span style="color: var(--color-cyan-600)">Biological Optimization.</span>
-        </p>
+        <div class="flex-1 lg:pr-8 text-center lg:text-left w-full">
+           
+           <a href="/blog" class="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full border border-gray-200 shadow-sm transition-colors mb-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300" style="color: var(--color-cyan-600)" onmouseover="this.style.backgroundColor='var(--color-blue-50)'" onmouseout="this.style.backgroundColor='white'">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+              <span class="text-[10px] font-black uppercase tracking-[0.15em] text-slate-900">Back to Articles</span>
+           </a>
 
-        <section id="s1" class="scroll-mt-32 border-t border-slate-100 pt-10">
-          <h2>I. The Forgetting Curve</h2>
-          <p>In 1885, psychologist Hermann Ebbinghaus discovered the "Forgetting Curve"—the mathematical formula showing how information is lost over time when there is no attempt to retain it.</p>
-          <p>In traditional Quranic memorization, the antidote to this curve is "Manzil" (daily bulk revision). However, repeating everything you know every single day eventually becomes mathematically impossible as your memorized portion grows.</p>
-        </section>
+           <h1 class="text-[clamp(1.75rem,5vw,4.5rem)] font-black text-slate-900 tracking-tight leading-[1.05] mb-6">
+              The Hifz <br class="hidden md:block" />
+              <span style="color: var(--color-cyan-600)">Algorithm.</span>
+           </h1>
+           
+           <p class="text-lg md:text-xl text-slate-600 font-medium leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-10">
+              Leveraging cognitive science and Spaced Repetition to master the Quran with 300% higher retention rates.
+           </p>
 
-        <div class="not-prose my-16 border rounded-3xl p-8 md:p-10 relative overflow-hidden shadow-sm" style="background-color: oklch(from var(--color-blue-50) l c h / 0.5); border-color: var(--color-blue-100)">
-          <div class="absolute top-0 left-0 w-2 h-full" style="background-color: var(--color-cyan-500)"></div>
-          <div class="flex items-start gap-5">
-            <div class="w-12 h-12 bg-white rounded-2xl shadow-sm border flex items-center justify-center shrink-0" style="border-color: var(--color-blue-100); color: var(--color-cyan-600)">
-              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-            </div>
-            <div>
-              <h3 class="text-xl font-black text-slate-900 mb-3 tracking-tight">Spaced Repetition (SRS)</h3>
-              <p class="text-slate-600 leading-relaxed font-medium">
-                By reviewing verses exactly at the moment you are about to forget them, you force the brain to synthesize deeper neural pathways. Spaced Repetition algorithms can cut your required revision time by up to 60% while increasing permanent retention.
-              </p>
-            </div>
+           <div class="flex items-center justify-center lg:justify-start gap-4">
+              <span class="text-sm font-bold text-slate-900">8 Min Read</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+              <span class="text-sm font-bold text-slate-500">Feb 10, 2026</span>
+           </div>
+        </div>
+
+        <div class="w-full lg:w-[45%] flex-shrink-0 flex justify-center lg:justify-end mt-8 lg:mt-0">
+          <div class="rounded-[2.5rem] md:rounded-[4rem] aspect-[4/3] w-full max-w-[500px] relative flex items-center justify-center border shadow-inner overflow-hidden" style="background-color: var(--color-blue-50); border-color: var(--color-blue-100)">
+              <div aria-hidden="true" class="absolute top-[-20%] right-[-20%] w-[120%] h-[120%] bg-white rounded-full blur-[40px] md:blur-[80px] opacity-60"></div>
+              <div class="w-32 h-32 md:w-56 md:h-56 bg-white rounded-[2rem] md:rounded-[3rem] flex items-center justify-center border border-white relative z-10 animate-float" style="box-shadow: 0 30px 60px -15px oklch(from var(--color-cyan-600) l c h / 0.2)">
+                  <svg class="w-16 h-16 md:w-28 md:h-28" style="color: var(--color-cyan-500)" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+              </div>
           </div>
         </div>
 
-        <section id="s2" class="scroll-mt-32 border-t border-slate-100 pt-10 pb-10">
-          <h2>II. Active Recall vs. Passive Reading</h2>
-          <p>Reading from the Mushaf is a passive activity; your brain is merely recognizing shapes. True memory is built through <strong>Active Recall</strong>—forcing your brain to retrieve the next word without looking.</p>
-          <p>When combined with Spaced Repetition algorithms, Active Recall turns short-term memory into permanent, iron-clad retention. Modern digital tools and structured online testing allow students to implement these cognitive strategies flawlessly.</p>
-        </section>
+      </div>
+    </header>
 
-      </article>
+    <main class="py-16 md:py-24 px-4 md:px-6 bg-white relative">
+      <div class="max-w-6xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
+        
+        <article class="flex-1 min-w-0 edge-prose w-full max-w-3xl mx-auto lg:mx-0 break-words">
+          
+          <p class="text-xl md:text-2xl font-bold text-slate-900 mb-12 leading-[1.6] tracking-tight">
+            Traditional Hifz relies purely on willpower. Modern Hifz is built on <span style="color: var(--color-cyan-600)">Biological Optimization.</span>
+          </p>
 
-      <aside class="w-full lg:w-[320px] lg:sticky lg:top-32 shrink-0">
-        <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]">
-            <h4 class="text-[10px] font-black uppercase tracking-[0.2em] border-b border-slate-100 pb-4 mb-6" style="color: var(--color-cyan-600)">Science Guide</h4>
-            
-            <nav class="flex flex-col gap-4">
-                <a href="#s1" class="text-sm font-bold text-slate-600 transition-colors" onmouseover="this.style.color='var(--color-cyan-600)'" onmouseout="this.style.color='currentColor'">I. Forgetting Curve</a>
-                <a href="#s2" class="text-sm font-bold text-slate-600 transition-colors" onmouseover="this.style.color='var(--color-cyan-600)'" onmouseout="this.style.color='currentColor'">II. Active Recall</a>
-            </nav>
-            
-            <div class="mt-8 pt-6 border-t border-slate-200 flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center font-black text-sm shadow-md">QA</div>
-                <div>
-                    <p class="text-sm font-bold text-slate-900 leading-tight">Academic Review</p>
-                    <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-0.5">QuranAble Board</p>
-                </div>
+          <section id="s1" class="scroll-mt-32 border-t border-slate-100 pt-10">
+            <h2>I. The Forgetting Curve</h2>
+            <p>In 1885, psychologist Hermann Ebbinghaus discovered the "Forgetting Curve"—the mathematical formula showing how information is lost over time when there is no attempt to retain it.</p>
+            <p>In traditional Quranic memorization, the antidote to this curve is "Manzil" (daily bulk revision). However, repeating everything you know every single day eventually becomes mathematically impossible as your memorized portion grows.</p>
+          </section>
+
+          <div class="not-prose my-16 border rounded-3xl p-6 md:p-10 relative overflow-hidden shadow-sm" style="background-color: oklch(from var(--color-blue-50) l c h / 0.5); border-color: var(--color-blue-100)">
+            <div class="absolute top-0 left-0 w-2 h-full" style="background-color: var(--color-cyan-500)"></div>
+            <div class="flex items-start gap-4 md:gap-5">
+              <div class="w-10 h-10 md:w-12 md:h-12 bg-white rounded-2xl shadow-sm border flex items-center justify-center shrink-0" style="border-color: var(--color-blue-100); color: var(--color-cyan-600)">
+                <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+              </div>
+              <div>
+                <h3 class="text-lg md:text-xl font-black text-slate-900 mb-3 tracking-tight">Spaced Repetition (SRS)</h3>
+                <p class="text-slate-600 leading-relaxed font-medium text-base md:text-lg">
+                  By reviewing verses exactly at the moment you are about to forget them, you force the brain to synthesize deeper neural pathways. Spaced Repetition algorithms can cut your required revision time by up to 60% while increasing permanent retention.
+                </p>
+              </div>
             </div>
+          </div>
 
-            <div class="mt-8">
-                <a href="/funnels/signup" class="flex items-center justify-center w-full py-3.5 text-white rounded-xl font-bold text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all focus-visible:outline-none focus-visible:ring-4" style="background-color: var(--color-cyan-600); box-shadow: 0 10px 20px -10px oklch(from var(--color-cyan-600) l c h / 0.5); outline-color: var(--color-cyan-200)">
-                  Start Memorizing
-                </a>
-            </div>
-        </div>
-      </aside>
+          <section id="s2" class="scroll-mt-32 border-t border-slate-100 pt-10 pb-10">
+            <h2>II. Active Recall vs. Passive Reading</h2>
+            <p>Reading from the Mushaf is a passive activity; your brain is merely recognizing shapes. True memory is built through <strong>Active Recall</strong>—forcing your brain to retrieve the next word without looking.</p>
+            <p>When combined with Spaced Repetition algorithms, Active Recall turns short-term memory into permanent, iron-clad retention. Modern digital tools and structured online testing allow students to implement these cognitive strategies flawlessly.</p>
+          </section>
 
-    </div>
-  </main>
+        </article>
 
-  <section class="bg-slate-50 py-24 md:py-32 px-6 border-t border-slate-200 text-center">
-    <div class="max-w-3xl mx-auto flex flex-col items-center">
-        <div class="w-16 h-16 bg-white border border-slate-200 shadow-sm rounded-2xl flex items-center justify-center mb-8" style="color: var(--color-cyan-600)">
-            <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-        </div>
-        <h2 class="text-[clamp(2rem,4vw,3.5rem)] font-black text-slate-900 tracking-tight leading-[1.1] mb-6">
-            Build permanent memory.
-        </h2>
-        <p class="text-lg md:text-xl text-slate-600 font-medium leading-relaxed mb-10 max-w-2xl">
-            Stop relying purely on willpower. Connect with a master tutor and build a scientifically-backed memorization schedule today.
-        </p>
-        <a href="/funnels/signup" class="inline-flex items-center justify-center gap-2 px-10 py-5 text-white text-lg font-black rounded-2xl hover:-translate-y-1 transition-all duration-300 focus-visible:outline-none focus-visible:ring-4" style="background-color: var(--color-cyan-600); box-shadow: 0 15px 30px -10px oklch(from var(--color-cyan-600) l c h / 0.4); outline-color: var(--color-cyan-200)">
-            Claim Your Free Trial
-            <svg aria-hidden="true" class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-        </a>
-    </div>
-  </section>
+        <aside class="w-full lg:w-[320px] lg:sticky lg:top-32 shrink-0 hidden lg:block">
+          <div class="bg-white rounded-3xl p-8 border border-slate-200 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]">
+              <h4 class="text-[10px] font-black uppercase tracking-[0.2em] border-b border-slate-100 pb-4 mb-6" style="color: var(--color-cyan-600)">Science Guide</h4>
+              
+              <nav class="flex flex-col gap-4">
+                  <a href="#s1" class="text-sm font-bold text-slate-600 transition-colors" onmouseover="this.style.color='var(--color-cyan-600)'" onmouseout="this.style.color='currentColor'">I. Forgetting Curve</a>
+                  <a href="#s2" class="text-sm font-bold text-slate-600 transition-colors" onmouseover="this.style.color='var(--color-cyan-600)'" onmouseout="this.style.color='currentColor'">II. Active Recall</a>
+              </nav>
+              
+              <div class="mt-8 pt-6 border-t border-slate-200 flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center font-black text-sm shadow-md">QA</div>
+                  <div>
+                      <p class="text-sm font-bold text-slate-900 leading-tight">Academic Review</p>
+                      <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-0.5">QuranAble Board</p>
+                  </div>
+              </div>
 
-  <script>
+              <div class="mt-8">
+                  <a href="/funnels/signup" class="flex items-center justify-center w-full py-3.5 text-white rounded-xl font-bold text-sm shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all focus-visible:outline-none focus-visible:ring-4" style="background-color: var(--color-cyan-600); box-shadow: 0 10px 20px -10px oklch(from var(--color-cyan-600) l c h / 0.5); outline-color: var(--color-cyan-200)">
+                    Start Memorizing
+                  </a>
+              </div>
+          </div>
+        </aside>
+
+        <aside class="w-full lg:hidden shrink-0 mt-8">
+           <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.05)]">
+             <h4 class="text-[10px] font-black uppercase tracking-[0.2em] border-b border-slate-100 pb-4 mb-6" style="color: var(--color-cyan-600)">In This Article</h4>
+             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                 <a href="#s1" class="text-sm font-bold text-slate-600">I. Forgetting Curve</a>
+                 <a href="#s2" class="text-sm font-bold text-slate-600">II. Active Recall</a>
+             </div>
+           </div>
+        </aside>
+
+      </div>
+    </main>
+
+    <section class="bg-slate-50 py-24 md:py-32 px-4 md:px-6 border-t border-slate-200 text-center">
+      <div class="max-w-3xl mx-auto flex flex-col items-center">
+          <div class="w-16 h-16 bg-white border border-slate-200 shadow-sm rounded-2xl flex items-center justify-center mb-8" style="color: var(--color-cyan-600)">
+              <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          </div>
+          <h2 class="text-[clamp(1.75rem,4vw,3.5rem)] font-black text-slate-900 tracking-tight leading-[1.1] mb-6">
+              Build permanent memory.
+          </h2>
+          <p class="text-lg md:text-xl text-slate-600 font-medium leading-relaxed mb-10 max-w-2xl">
+              Stop relying purely on willpower. Connect with a master tutor and build a scientifically-backed memorization schedule today.
+          </p>
+          <a href="/funnels/signup" class="inline-flex w-full md:w-auto items-center justify-center gap-2 px-6 py-4 md:px-10 md:py-5 text-white text-lg font-black rounded-2xl hover:-translate-y-1 transition-all duration-300 focus-visible:outline-none focus-visible:ring-4" style="background-color: var(--color-cyan-600); box-shadow: 0 15px 30px -10px oklch(from var(--color-cyan-600) l c h / 0.4); outline-color: var(--color-cyan-200)">
+              Claim Your Free Trial
+              <svg aria-hidden="true" class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+          </a>
+      </div>
+    </section>
+
+  </div><script>
     window.addEventListener('scroll', () => {
       const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
